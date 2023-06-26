@@ -1,11 +1,11 @@
 const app = require('../app');
 const request = require("supertest"); // needed for integration testing to test for endpoints
 const db = require('../db/connection');
-const testData = require('../db/data/test-data/index');
+const {articleData, commentData, topicData, userData} = require('../db/data/test-data/index');
 const seed = require('../db/seeds/seed');
 
 beforeEach(() => {
-    return seed(testData);
+    return seed({articleData, commentData, topicData, userData});
   });
   
   afterAll(() => {
@@ -13,7 +13,7 @@ beforeEach(() => {
   });
 
   describe('GET /api/topics', () => {
-    xtest('200 responds with an array of topic objects', () =>{
+    test('200 responds with an array of topic objects', () =>{
         return request(app)
         .get('/api/topics') // path
         .expect(200) // successful request
