@@ -52,9 +52,7 @@ describe("GET /api/articles", () => {
     .get('/api/articles')
     .expect(200)
     .then(({body}) => {
-      const {articles} = body;
-console.log(articles, 'articles')
-      
+      const {articles} = body;    
       expect(articles).toHaveLength(5);
       articles.forEach((article)=> {
         expect(article).toHaveProperty("author", expect.any(String));
