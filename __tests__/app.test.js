@@ -1,6 +1,7 @@
 const app = require("../app");
 const request = require("supertest"); // needed for integration testing to test for endpoints
 const db = require("../db/connection");
+const apiEndpoints = require('../endpoints.json')
 const {
   articleData,
   commentData,
@@ -33,3 +34,13 @@ describe("GET /api/topics", () => {
       });
   });
 });
+describe("GET /api", ()=> {
+  test('200 responds with an object describing the available endpoints on your API', ()=>{
+    return request(app)
+    .get("/api")
+    .expect(200)
+    .then(({body}) => {
+      expect(body).toEqual(apiEndpoints)
+    })
+  })
+})
