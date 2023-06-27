@@ -43,6 +43,7 @@ describe("GET /api/articles/:article_id", () => {
     .then(({body}) => {
       const {articles} = body;
       expect(articles).toHaveLength(1);
+      expect(articles.article_id).toBe(1);
       articles.forEach((article) => {
         expect(article).toHaveProperty("author", expect.any(String));
         expect(article).toHaveProperty("title", expect.any(String));
