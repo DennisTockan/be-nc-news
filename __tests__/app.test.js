@@ -33,3 +33,26 @@ describe("GET /api/topics", () => {
       });
   });
 });
+
+
+describe("GET /api/articles/:article_id", () => {
+  test("200 accepts an article_id which responds with articles which have the specified article_id", ()=> {
+    return request(app)
+    .get("/api/articles?article_id=1")
+    .expect(200)
+    .then(({body}) => {
+      const {articles} = body;
+      expect(articles).toHaveLength(1);
+      articles.forEach((article) => {
+        expect(article).toHaveProperty("author", expect.any(String));
+        expect(article).toHaveProperty("title", expect.any(String));
+        expect(article).toHaveProperty("article_id", expect.any(Number));
+        expect(article).toHaveProperty("body", expect.any(String));
+        expect(article).toHaveProperty("topic", expect.any(String));
+        expect(article).toHaveProperty("created_at", expect.any(Number));
+        expect(article).toHaveProperty("votes", expect.any(Number));
+        expect(article).toHaveProperty("article_img_url", expect.any(String));
+      });
+    })
+  })
+})

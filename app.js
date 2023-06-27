@@ -9,6 +9,10 @@ const {
 
 app.get("/api/topics", getAllTopics);
 
+
+app.get("/api/articles/:article_id", )
+
+
 app.use(handlePsqlErrors);
 
 app.use(handleCustomErrors);
