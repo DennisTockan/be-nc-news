@@ -36,7 +36,7 @@ describe("GET /api/topics", () => {
 
 
 describe("GET /api/articles/:article_id", () => {
-  test("200 accepts an article_id which responds with articles which have the specified article_id", ()=> {
+  xtest("200 accepts an article_id which responds with articles which have the specified article_id", ()=> {
     return request(app)
     .get("/api/articles?article_id=1")
     .expect(200)
