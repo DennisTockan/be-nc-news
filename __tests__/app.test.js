@@ -1,7 +1,7 @@
 const app = require("../app");
 const request = require("supertest"); // needed for integration testing to test for endpoints
 const db = require("../db/connection");
-const apiEndpoints = require('../endpoints.json')
+const apiEndpoints = require("../endpoints.json");
 const {
   articleData,
   commentData,
@@ -34,36 +34,36 @@ describe("GET /api/topics", () => {
       });
   });
 });
-describe("GET /api", ()=> {
-  test('200 responds with an object describing the available endpoints on your API', ()=>{
-    return request(app)
-    .get("/api")
-    .expect(200)
-    .then(({body}) => {
-      expect(body).toEqual(apiEndpoints)
-    })
-  })
-});
 
+describe("GET /api", () => {
+  test("200 responds with an object describing the available endpoints on your API", () => {
+    return request(app)
+      .get("/api")
+      .expect(200)
+      .then(({ body }) => {
+        expect(body).toEqual(apiEndpoints);
+      });
+  });
+});
 
 describe("GET /api/articles", () => {
   test("200 should respond with an article array or article objects with the correct properties", () => {
     return request(app)
-    .get('/api/articles')
-    .expect(200)
-    .then(({body}) => {
-      const {articles} = body;    
-      expect(articles).toHaveLength(5);
-      articles.forEach((article)=> {
-        expect(article).toHaveProperty("author", expect.any(String));
-        expect(article).toHaveProperty("title", expect.any(String));
-        expect(article).toHaveProperty("article_id", expect.any(Number));
-        expect(article).toHaveProperty("topic", expect.any(String));
-        expect(article).toHaveProperty("created_at", expect.any(String));
-        expect(article).toHaveProperty("votes", expect.any(Number));
-        expect(article).toHaveProperty("article_img_url", expect.any(String));
-        expect(article).toHaveProperty("comment_count", expect.any(Number));
-      })
-    })
-  })
-})
+      .get("/api/articles")
+      .expect(200)
+      .then(({ body }) => {
+        const { articles } = body;
+        expect(articles).toHaveLength(5);
+        articles.forEach((article) => {
+          expect(article).toHaveProperty("author", expect.any(String));
+          expect(article).toHaveProperty("title", expect.any(String));
+          expect(article).toHaveProperty("article_id", expect.any(Number));
+          expect(article).toHaveProperty("topic", expect.any(String));
+          expect(article).toHaveProperty("created_at", expect.any(String));
+          expect(article).toHaveProperty("votes", expect.any(Number));
+          expect(article).toHaveProperty("article_img_url", expect.any(String));
+          expect(article).toHaveProperty("comment_count", expect.any(Number));
+        });
+      });
+  });
+});

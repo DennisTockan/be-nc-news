@@ -4,11 +4,11 @@ exports.getAllArticles = (_, res, next) => {
   selectAllArticles().then((articles) => {
     // console.log(article, 'article')
     res.status(200).send({articles});
-  });
-};
-
-/*
-.catch((err) => {
+  }).catch((err) => {
         next(err);
       });
-*/
+};
+
+
+
+
