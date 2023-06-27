@@ -34,26 +34,37 @@ describe("GET /api/topics", () => {
   });
 });
 
-
 describe("GET /api/articles/:article_id", () => {
-  xtest("200 accepts an article_id which responds with articles which have the specified article_id", ()=> {
+  test("200 accepts an article_id which responds with the specified article_id", () => {
     return request(app)
-    .get("/api/articles?article_id=1")
-    .expect(200)
-    .then(({body}) => {
-      const {articles} = body;
-      expect(articles).toHaveLength(1);
-      expect(articles.article_id).toBe(1);
-      articles.forEach((article) => {
-        expect(article).toHaveProperty("author", expect.any(String));
-        expect(article).toHaveProperty("title", expect.any(String));
-        expect(article).toHaveProperty("article_id", expect.any(Number));
-        expect(article).toHaveProperty("body", expect.any(String));
-        expect(article).toHaveProperty("topic", expect.any(String));
-        expect(article).toHaveProperty("created_at", expect.any(Number));
-        expect(article).toHaveProperty("votes", expect.any(Number));
-        expect(article).toHaveProperty("article_img_url", expect.any(String));
-      });
-    })
+      .get("/api/articles/1")
+      .expect(200)
+      .then(({body}) => {
+        const {article}  = body;
+          expect(article).toHaveProperty("article_id", expect.any(Number));
+          expect(article).toHaveProperty("title", expect.any(String));
+          expect(article).toHaveProperty("topic", expect.any(String));
+          expect(article).toHaveProperty("author", expect.any(String));
+          expect(article).toHaveProperty("body", expect.any(String));
+          expect(article).toHaveProperty("created_at", expect.any(String));
+          expect(article).toHaveProperty("votes", expect.any(Number));
+          expect(article).toHaveProperty("article_img_url", expect.any(String));
   })
-})
+  });
+  test("400 reject an article_id with an invalid type of request", () => {
+    return request(app)
+      .get("/api/articles/badpath")
+      .expect(400)
+      .then(({body}) => {
+        expect(body.message).toBe("Bad Request");
+  });
+  });
+  test("404 reject an article_id that is valid but not found", () => {
+    return request(app)
+      .get("/api/articles/100")
+      .expect(404)
+      .then(({body}) => {
+        expect(body.message).toBe("Not Found");
+  });
+  });
+});
