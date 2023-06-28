@@ -7,6 +7,5 @@ exports.selectArticleById = (article_id) => {
             return Promise.reject({status: 404, message: 'Not Found'})
         }
         return rows[0]
-        
     })
 }

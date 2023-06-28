@@ -14,7 +14,6 @@ const {
 app.get("/api/topics", getAllTopics);
 
 
-
 app.get("/api/", getAllApiEndpoints);
 
 app.get('/api/articles', getAllArticles);
