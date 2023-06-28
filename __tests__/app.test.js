@@ -51,7 +51,10 @@ describe('GET /api/articles/:article_id/comments', () => {
     .get("/api/articles/1/comments")
     .expect(200)
     .then(({body}) => {
-      const {comment} = body;
+      const {comments} = body;
+      comments.forEach((comment) => {
+        
+      })
 
     })
   })
