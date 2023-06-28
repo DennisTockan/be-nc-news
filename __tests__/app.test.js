@@ -66,7 +66,6 @@ describe("GET /api/articles", () => {
           expect(article).toHaveProperty("article_img_url", expect.any(String));
           expect(article).toHaveProperty("comment_count", expect.any(String));
         });
-
       });
   });
 });
