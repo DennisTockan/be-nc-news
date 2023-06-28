@@ -1,6 +1,7 @@
 const app = require("../app");
 const request = require("supertest"); // needed for integration testing to test for endpoints
 const db = require("../db/connection");
+const apiEndpoints = require('../endpoints.json')
 const {
   articleData,
   commentData,
@@ -41,7 +42,7 @@ describe("GET /api/articles/:article_id", () => {
       .expect(200)
       .then(({body}) => {
         const {article}  = body;
-          expect(article).toHaveProperty("article_id", expect.any(Number));
+          expect(article.article_id).toEqual(1);
           expect(article).toHaveProperty("title", expect.any(String));
           expect(article).toHaveProperty("topic", expect.any(String));
           expect(article).toHaveProperty("author", expect.any(String));
