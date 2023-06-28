@@ -35,39 +35,38 @@ describe("GET /api/topics", () => {
   });
 });
 
-describe("GET /api/articles/:article_id", () => {
-  test("200 accepts an article_id which responds with the specified article_id", () => {
+describe("GET /api", () => {
+  test("200 responds with an object describing the available endpoints on your API", () => {
     return request(app)
-      .get("/api/articles/1")
+      .get("/api")
       .expect(200)
       .then(({ body }) => {
-        const { article } = body;
-        expect(article.article_id).toEqual(1);
-        expect(article.title).toEqual("Living in the shadow of a great man");
-        expect(article.topic).toEqual("mitch");
-        expect(article.author).toEqual("butter_bridge");
-        expect(article.body).toEqual("I find this existence challenging");
-        expect(article.created_at).toEqual("2020-07-09T20:11:00.000Z");
-        expect(article.votes).toEqual(100);
-        expect(article.article_img_url).toEqual(
-          "https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg?w=700&h=700"
-        );
+        expect(body).toEqual(apiEndpoints);
       });
   });
-  test("400 reject an article_id with an invalid type of request", () => {
+});
+
+describe("GET /api/articles", () => {
+  test("200 should respond with an article array or article objects with the correct properties", () => {
     return request(app)
-      .get("/api/articles/badpath")
-      .expect(400)
+      .get("/api/articles")
+      .expect(200)
       .then(({ body }) => {
-        expect(body.message).toBe("Bad Request");
-      });
-  });
-  test("404 reject an article_id that is valid but not found", () => {
-    return request(app)
-      .get("/api/articles/100")
-      .expect(404)
-      .then(({ body }) => {
-        expect(body.message).toBe("Not Found");
+        const { articles } = body;
+        console.log(articles)
+        expect(articles).toHaveLength(5); 
+        expect(articles).toBeSorted({key: 'created_at', descending: true })
+        articles.forEach((article) => {
+          expect(article).toHaveProperty("author", expect.any(String));
+          expect(article).toHaveProperty("title", expect.any(String));
+          expect(article).toHaveProperty("article_id", expect.any(Number));
+          expect(article).toHaveProperty("topic", expect.any(String));
+          expect(article).toHaveProperty("created_at", expect.any(String));
+          expect(article).toHaveProperty("votes", expect.any(Number));
+          expect(article).toHaveProperty("article_img_url", expect.any(String));
+          expect(article).toHaveProperty("comment_count", expect.any(String));
+        });
+
       });
   });
 });
