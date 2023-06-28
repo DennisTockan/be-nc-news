@@ -1,3 +1,4 @@
+
 const { selectAllArticles } = require("../models/articles.model");
 
 exports.getAllArticles = (_, res, next) => {
@@ -7,7 +8,6 @@ exports.getAllArticles = (_, res, next) => {
         next(err);
       });
 };
-
 
 
 
