@@ -12,10 +12,7 @@ exports.selectAllArticles = () => {
           message: "Not Found",
         });
       }
+return rows
 
-      return rows.map((row) => {
-        row.comment_count = Number(row.comment_count);
-        return row;
-      });
     });
 };
