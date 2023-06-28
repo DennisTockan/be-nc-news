@@ -46,13 +46,12 @@ describe("GET /api", ()=> {
 })
 
 describe('GET /api/articles/:article_id/comments', () => {
-  xtest('200 accepts an article_id and responds with an array of comments for that given id ', () => {
+  test('200 accepts an article_id and responds with an array of comments for that given id ', () => {
     return request(app)
     .get("/api/articles/1/comments")
     .expect(200)
     .then(({body}) => {
       const {comments} = body;
-      console.log(comments, '<-- comments')
       comments.forEach((comment) => {
         expect(comment).toHaveProperty("comment_id", expect.any(Number));
         expect(comment).toHaveProperty("votes", expect.any(Number));
@@ -63,7 +62,7 @@ describe('GET /api/articles/:article_id/comments', () => {
       })
     })
   })
-  xtest('400 reject an article_id with an invalid type of request', () => {
+  test('400 reject an article_id with an invalid type of request', () => {
     return request(app)
     .get("/api/articles/badRequest/comments")
     .expect(400)
@@ -71,9 +70,9 @@ describe('GET /api/articles/:article_id/comments', () => {
       expect(body.message).toBe("Bad Request");
     })
   })
-  xtest('404 reject an article_id that is valid but not found', () => {
+  test('404 reject an article_id that is valid but not found', () => {
     return request(app)
-    .get("/api/articles/badRequest/comments")
+    .get("/api/articles/100/comments")
     .expect(404)
     .then(({body}) => {
       expect(body.message).toBe("Not Found");

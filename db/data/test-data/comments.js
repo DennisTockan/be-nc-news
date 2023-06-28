@@ -124,5 +124,5 @@ module.exports = [
     author: "butter_bridge",
     article_id: 1,
     created_at: 1595294400000,
-  },
+  }
 ];
