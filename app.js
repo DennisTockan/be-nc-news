@@ -15,7 +15,6 @@ app.get("/api/", getAllApiEndpoints);
 
 app.get("/api/articles/:article_id/comments", getArticleIdComments)
 
-
 app.use(handlePsqlErrors);
 
 app.use(handleCustomErrors);
