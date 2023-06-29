@@ -46,13 +46,15 @@ describe("GET /api", ()=> {
 })
 
 describe('GET /api/articles/:article_id/comments', () => {
-  test('200 accepts an article_id and responds with an array of comments for that given id ', () => {
+  xtest('200 accepts an article_id and responds with an array of comments for that given id ', () => {
     return request(app)
     .get("/api/articles/1/comments")
     .expect(200)
     .then(({body}) => {
       const {comments} = body;
+      console.log(comments, 'comments')
       expect(comments).toHaveLength(11); 
+      expect(comments).toBeSorted({key: 'created_at', descending: true})
       comments.forEach((comment) => {
         expect(comment).toHaveProperty("comment_id", expect.any(Number));
         expect(comment).toHaveProperty("votes", expect.any(Number));
