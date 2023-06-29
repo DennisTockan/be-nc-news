@@ -52,6 +52,7 @@ describe('GET /api/articles/:article_id/comments', () => {
     .expect(200)
     .then(({body}) => {
       const {comments} = body;
+      expect(comments).toHaveLength(11); 
       comments.forEach((comment) => {
         expect(comment).toHaveProperty("comment_id", expect.any(Number));
         expect(comment).toHaveProperty("votes", expect.any(Number));
