@@ -89,4 +89,4 @@ describe('GET /api/articles/:article_id/comments', () => {
       expect(body.message).toBe("Not Found");
     })
   })
-})
+});
