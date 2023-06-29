@@ -53,7 +53,7 @@ describe('GET /api/articles/:article_id/comments', () => {
     .then(({body}) => {
       const {comments} = body;
       expect(comments).toHaveLength(11); 
-      expect(comments).toBeSorted({key: 'created_at', descending: true})
+      expect(comments).toBeSorted({key: 'created_at', descending: true});
       comments.forEach((comment) => {
         expect(comment).toHaveProperty("comment_id", expect.any(Number));
         expect(comment).toHaveProperty("votes", expect.any(Number));
@@ -63,7 +63,16 @@ describe('GET /api/articles/:article_id/comments', () => {
         expect(comment).toHaveProperty("article_id", expect.any(Number));
       })
     })
-  })
+  });
+  test('200 accepts an article_id and responds with an empty array to illustrate no comments on this article', () => {
+    return request(app)
+    .get("/api/articles/2/comments")
+    .expect(200)
+    .then(({body}) => {
+      const {comments} = body;
+      expect(comments).toEqual([]);
+    })
+  });
   test('400 reject an article_id with an invalid type of request', () => {
     return request(app)
     .get("/api/articles/badRequest/comments")
@@ -71,7 +80,7 @@ describe('GET /api/articles/:article_id/comments', () => {
     .then(({body}) => {
       expect(body.message).toBe("Bad Request");
     })
-  })
+  });
   test('404 reject an article_id that is valid but not found', () => {
     return request(app)
     .get("/api/articles/100/comments")
