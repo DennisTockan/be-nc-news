@@ -69,3 +69,23 @@ describe("GET /api/articles", () => {
       });
   });
 });
+
+
+describe("POST /api/articles/:article_id/comments", () => {
+  xtest("201 should respond with a new comments for the specified article_id", () => {
+    const newComment = {
+
+    };
+    return request(app)
+    .post()
+    .send({})
+    .expect(201)
+    .then(({body}) => {
+      expect(body.newComment).toEqual({
+
+
+      })
+    }
+    )
+  })
+})
