@@ -3,6 +3,8 @@ const app = express();
 const { getAllTopics } = require("./controllers/topics.controllers");
 const { getAllApiEndpoints } = require("./controllers/api.controllers");
 const { getArticleIdComments } = require('./controllers/article_id_comments.controllers')
+const { deletedComment } = require("./controllers/comment.controller");
+
 const {
   getAllArticles,
   postArticleIdComment,
@@ -25,6 +27,9 @@ app.get("/api/articles", getAllArticles);
 app.get("/api/articles/:article_id/comments", getArticleIdComments)
 
 app.post("/api/articles/:article_id/comments", postArticleIdComment);
+
+app.delete("/api/comments/:comment_id", deletedComment)
+
 
 app.use(handlePsqlErrors);
 
