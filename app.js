@@ -15,7 +15,11 @@ app.get("/api/topics", getAllTopics);
 
 app.get("/api/", getAllApiEndpoints);
 
-app.get('/api/articles', getAllArticles);
+app.get("/api/articles", getAllArticles);
+
+app.get("/api/articles/:article_id/comments", getArticleIdComments)
+
+app.post("/api/articles/:article_id/comments", postArticleIdComment);
 
 app.patch("/api/articles/:article_id", patchArticleIdsArticle );
 

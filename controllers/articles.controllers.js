@@ -2,11 +2,13 @@
 const { selectAllArticles, selectPatchArticleIdsArticle } = require("../models/articles.model");
 
 exports.getAllArticles = (_, res, next) => {
-  selectAllArticles().then((articles) => {
-    res.status(200).send({articles});
-  }).catch((err) => {
-        next(err);
-      });
+  selectAllArticles()
+    .then((articles) => {
+      res.status(200).send({ articles });
+    })
+    .catch((err) => {
+      next(err);
+    });
 };
 
 exports.patchArticleIdsArticle = (req, res, next) => {

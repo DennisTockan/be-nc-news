@@ -12,8 +12,7 @@ exports.selectAllArticles = () => {
           message: "Not Found",
         });
       }
-return rows
-
+      return rows;
     });
 };
 
