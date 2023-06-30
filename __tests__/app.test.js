@@ -55,6 +55,7 @@ describe("GET /api/articles", () => {
         const { articles } = body;
         expect(articles).toHaveLength(5); 
         expect(articles).toBeSorted({key: 'created_at', descending: true })
+
         articles.forEach((article) => {
           expect(article).toHaveProperty("author", expect.any(String));
           expect(article).toHaveProperty("title", expect.any(String));
@@ -65,6 +66,62 @@ describe("GET /api/articles", () => {
           expect(article).toHaveProperty("article_img_url", expect.any(String));
           expect(article).toHaveProperty("comment_count", expect.any(String));
         });
+      });
+  });
+});
+
+describe("POST /api/articles/:article_id/comments", () => {
+  test("200 should add the comment inserted for the specified article_id", () => {
+    const newComment = {
+      username: "butter_bridge",
+      body: "This is the new comment",
+    };
+    return request(app)
+      .post("/api/articles/1/comments")
+      .send(newComment)
+      .expect(201)
+      .then(({ body }) => {
+        const { comment } = body;
+        expect(comment.body).toBe("This is the new comment");
+      });
+  });
+  test("400 should return an error if passed an empty body", () => {
+    const newComment = {
+      username: "butter_bridge",
+      body: "",
+    };
+    return request(app)
+      .post("/api/articles/1/comments")
+      .send(newComment)
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.message).toBe("Bad Request");
+      });
+  });
+  test("404 should return an error if there is no article for this article_id", () => {
+    const newComment = {
+      username: "butter_bridge",
+      body: "Hello, this is the new comment",
+    };
+    return request(app)
+      .post("/api/articles/100/comments")
+      .send(newComment)
+      .expect(404)
+      .then(({ body }) => {
+        expect(body.message).toBe("There is no article");
+      });
+  });
+  test("404 should return an error if the specified user does not", () => {
+    const newComment = {
+      username: "Dennis-Tockan",
+      body: "Hello, this is the new comment",
+    };
+    return request(app)
+      .post("/api/articles/1/comments")
+      .send(newComment)
+      .expect(404)
+      .then(({ body }) => {
+        expect(body.message).toBe("Username not found");
       });
   });
 });
