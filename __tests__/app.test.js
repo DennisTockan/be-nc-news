@@ -49,6 +49,63 @@ describe("GET /api", () => {
 describe("GET /api/articles", () => {
   test("200 should respond with an article array or article objects with the correct properties", () => {
     return request(app)
+
+    .get("/api")
+    .expect(200)
+    .then(({body}) => {
+      expect(body).toEqual(apiEndpoints)
+    })
+  })
+})
+
+describe('GET /api/articles/:article_id/comments', () => {
+  test('200 accepts an article_id and responds with an array of comments for that given id ', () => {
+    return request(app)
+    .get("/api/articles/1/comments")
+    .expect(200)
+    .then(({body}) => {
+      const {comments} = body;
+      expect(comments).toHaveLength(11); 
+      expect(comments).toBeSorted({key: 'created_at', descending: true});
+      comments.forEach((comment) => {
+        expect(comment).toHaveProperty("comment_id", expect.any(Number));
+        expect(comment).toHaveProperty("votes", expect.any(Number));
+        expect(comment).toHaveProperty("created_at", expect.any(String));
+        expect(comment).toHaveProperty("author", expect.any(String));
+        expect(comment).toHaveProperty("body", expect.any(String));
+        expect(comment).toHaveProperty("article_id", expect.any(Number));
+      })
+    })
+  });
+  test('200 accepts an article_id and responds with an empty array to illustrate no comments on this article', () => {
+    return request(app)
+    .get("/api/articles/2/comments")
+    .expect(200)
+    .then(({body}) => {
+      const {comments} = body;
+      expect(comments).toEqual([]);
+    })
+  });
+  test('400 reject an article_id with an invalid type of request', () => {
+    return request(app)
+    .get("/api/articles/badRequest/comments")
+    .expect(400)
+    .then(({body}) => {
+      expect(body.message).toBe("Bad Request");
+    })
+  });
+  test('404 reject an article_id that is valid but not found', () => {
+    return request(app)
+    .get("/api/articles/100/comments")
+    .expect(404)
+    .then(({body}) => {
+      expect(body.message).toBe("Not Found");
+    })
+  })
+})
+describe("GET /api/articles", () => {
+  test("200 should respond with an article array or article objects with the correct properties", () => {
+    return request(app)
       .get("/api/articles")
       .expect(200)
       .then(({ body }) => {
@@ -66,8 +123,8 @@ describe("GET /api/articles", () => {
           expect(article).toHaveProperty("comment_count", expect.any(String));
         });
       });
-  });
-});
+    })
+})
 describe("PATCH: /api/articles/:article_id", () => {
   test("200 should increase the votes of the article by the incremented amount", () => {
     return request(app)
@@ -138,3 +195,59 @@ test("400 returns an invalid article_id type (non-integer) which does not exist"
     });
 });
 });
+describe("POST /api/articles/:article_id/comments", () => {
+  test("200 should add the comment inserted for the specified article_id", () => {
+    const newComment = {
+      username: "butter_bridge",
+      body: "This is the new comment",
+    };
+    return request(app)
+      .post("/api/articles/1/comments")
+      .send(newComment)
+      .expect(201)
+      .then(({ body }) => {
+        const { comment } = body;
+        expect(comment.body).toBe("This is the new comment");
+      });
+  });
+  test("400 should return an error if passed an empty body", () => {
+    const newComment = {
+      username: "butter_bridge",
+      body: "",
+    };
+    return request(app)
+      .post("/api/articles/1/comments")
+      .send(newComment)
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.message).toBe("Bad Request");
+      });
+  });
+  test("404 should return an error if there is no article for this article_id", () => {
+    const newComment = {
+      username: "butter_bridge",
+      body: "Hello, this is the new comment",
+    };
+    return request(app)
+      .post("/api/articles/100/comments")
+      .send(newComment)
+      .expect(404)
+      .then(({ body }) => {
+        expect(body.message).toBe("There is no article");
+      });
+  });
+  test("404 should return an error if the specified user does not", () => {
+    const newComment = {
+      username: "Dennis-Tockan",
+      body: "Hello, this is the new comment",
+    };
+    return request(app)
+      .post("/api/articles/1/comments")
+      .send(newComment)
+      .expect(404)
+      .then(({ body }) => {
+        expect(body.message).toBe("Username not found");
+      });
+  });
+});
+
