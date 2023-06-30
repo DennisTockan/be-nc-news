@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const { getAllTopics } = require("./controllers/topics.controllers");
 const { getAllApiEndpoints } = require("./controllers/api.controllers");
+const { getArticleIdComments } = require('./controllers/article_id_comments.controllers')
 const {
   getAllArticles,
   postArticleIdComment,
@@ -20,6 +21,8 @@ app.get("/api/topics", getAllTopics);
 app.get("/api/", getAllApiEndpoints);
 
 app.get("/api/articles", getAllArticles);
+
+app.get("/api/articles/:article_id/comments", getArticleIdComments)
 
 app.post("/api/articles/:article_id/comments", postArticleIdComment);
 

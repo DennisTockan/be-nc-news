@@ -70,6 +70,52 @@ describe("GET /api/articles", () => {
   });
 });
 
+
+describe('GET /api/articles/:article_id/comments', () => {
+  test('200 accepts an article_id and responds with an array of comments for that given id ', () => {
+    return request(app)
+    .get("/api/articles/1/comments")
+    .expect(200)
+    .then(({body}) => {
+      const {comments} = body;
+      expect(comments).toHaveLength(11); 
+      expect(comments).toBeSorted({key: 'created_at', descending: true});
+      comments.forEach((comment) => {
+        expect(comment).toHaveProperty("comment_id", expect.any(Number));
+        expect(comment).toHaveProperty("votes", expect.any(Number));
+        expect(comment).toHaveProperty("created_at", expect.any(String));
+        expect(comment).toHaveProperty("author", expect.any(String));
+        expect(comment).toHaveProperty("body", expect.any(String));
+        expect(comment).toHaveProperty("article_id", expect.any(Number));
+      })
+    })
+  });
+  test('200 accepts an article_id and responds with an empty array to illustrate no comments on this article', () => {
+    return request(app)
+    .get("/api/articles/2/comments")
+    .expect(200)
+    .then(({body}) => {
+      const {comments} = body;
+      expect(comments).toEqual([]);
+    })
+  });
+  test('400 reject an article_id with an invalid type of request', () => {
+    return request(app)
+    .get("/api/articles/badRequest/comments")
+    .expect(400)
+    .then(({body}) => {
+      expect(body.message).toBe("Bad Request");
+    })
+  });
+  test('404 reject an article_id that is valid but not found', () => {
+    return request(app)
+    .get("/api/articles/100/comments")
+    .expect(404)
+    .then(({body}) => {
+      expect(body.message).toBe("Not Found");
+    })
+  })
+});
 describe("POST /api/articles/:article_id/comments", () => {
   test("200 should add the comment inserted for the specified article_id", () => {
     const newComment = {
