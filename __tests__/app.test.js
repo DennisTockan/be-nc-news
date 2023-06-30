@@ -68,7 +68,6 @@ describe("GET /api/articles", () => {
       });
   });
 });
-
 describe("PATCH: /api/articles/:article_id", () => {
   test("200 should increase the votes of the article by the incremented amount", () => {
     return request(app)
@@ -121,6 +120,16 @@ describe("PATCH: /api/articles/:article_id", () => {
 test("400 returns an valid article_id which does not exist", () => {
   return request(app)
     .patch("/api/articles/1")
+    .send({ invalidRequest: 6 })
+    .expect(400)
+    .then(({ body }) => {
+      const { message } = body;
+      expect(message).toBe("Bad Request");
+    });
+});
+test("400 returns an invalid article_id type (non-integer) which does not exist", () => {
+  return request(app)
+    .patch("/api/articles/banana")
     .send({ invalidRequest: 6 })
     .expect(400)
     .then(({ body }) => {
