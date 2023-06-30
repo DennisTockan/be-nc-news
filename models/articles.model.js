@@ -56,7 +56,4 @@ exports.selectPostArticleIdComments = async (article_id, newComment) => {
     .then(({ rows }) => {
       return rows[0];
     })
-    .catch((err) => {
-      console.log(err);
-    });
 };

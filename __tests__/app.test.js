@@ -53,7 +53,6 @@ describe("GET /api/articles", () => {
       .expect(200)
       .then(({ body }) => {
         const { articles } = body;
-        console.log(articles);
         expect(articles).toHaveLength(5);
         expect(articles).toBeSorted({ key: "created_at", descending: true });
         articles.forEach((article) => {
