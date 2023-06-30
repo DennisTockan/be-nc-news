@@ -1,7 +1,5 @@
-const {
-  selectAllArticles,
-  selectPostArticleIdComments,
-} = require("../models/articles.model");
+
+const { selectAllArticles, selectPatchArticleIdsArticle } = require("../models/articles.model");
 
 exports.getAllArticles = (_, res, next) => {
   selectAllArticles()
@@ -13,14 +11,12 @@ exports.getAllArticles = (_, res, next) => {
     });
 };
 
-exports.postArticleIdComment = (req, res, next) => {
-  const { article_id } = req.params;
-  const newComment = req.body;
-  selectPostArticleIdComments(article_id, newComment)
-    .then((comment) => {
-      res.status(201).send({ comment });
-    })
-    .catch((err) => {
-      next(err);
-    });
-};
+exports.patchArticleIdsArticle = (req, res, next) => {
+  const {article_id} = req.params;
+  const {inc_votes} = req.body;
+  selectPatchArticleIdsArticle(article_id, inc_votes).then((data) => {
+    res.status(200).send({article: data[0]})
+  }).catch((err) => {
+    next(err)
+  })
+}

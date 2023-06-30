@@ -103,14 +103,15 @@ describe('GET /api/articles/:article_id/comments', () => {
     })
   })
 })
-
+describe("GET /api/articles", () => {
+  test("200 should respond with an article array or article objects with the correct properties", () => {
+    return request(app)
       .get("/api/articles")
       .expect(200)
       .then(({ body }) => {
         const { articles } = body;
-        expect(articles).toHaveLength(5); 
-        expect(articles).toBeSorted({key: 'created_at', descending: true })
-
+        expect(articles).toHaveLength(5);
+        expect(articles).toBeSorted({ key: "created_at", descending: true });
         articles.forEach((article) => {
           expect(article).toHaveProperty("author", expect.any(String));
           expect(article).toHaveProperty("title", expect.any(String));
@@ -122,53 +123,77 @@ describe('GET /api/articles/:article_id/comments', () => {
           expect(article).toHaveProperty("comment_count", expect.any(String));
         });
       });
+    })
+})
+describe("PATCH: /api/articles/:article_id", () => {
+  test("200 should increase the votes of the article by the incremented amount", () => {
+    return request(app)
+      .patch("/api/articles/1")
+      .send({ inc_votes: 1 })
+      .expect(200)
+      .then(({ body }) => {
+        const { article } = body;
+        expect(article.votes).toBe(101);
+      });
   });
+  test("200 should decrease the votes of the article by the decremented amount", () => {
+    return request(app)
+      .patch("/api/articles/1")
+      .send({ inc_votes: -5 })
+      .expect(200)
+      .then(({ body }) => {
+        const { article } = body;
+        expect(article.votes).toBe(95);
+      });
+  });
+  test("200 should display the new and patched article", () => {
+    return request(app)
+      .patch("/api/articles/1")
+      .send({ inc_votes: -5 })
+      .expect(200)
+      .then(({ body }) => {
+        const { article } = body;
+        expect(article.title).toEqual("Living in the shadow of a great man");
+        expect(article.topic).toEqual("mitch");
+        expect(article.author).toEqual("butter_bridge");
+        expect(article.body).toEqual("I find this existence challenging");
+        expect(article.created_at).toEqual("2020-07-09T20:11:00.000Z");
+        expect(article.votes).toEqual(95);
+        expect(article.article_img_url).toEqual(
+          "https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg?w=700&h=700"
+        );
+      });
+  });
+  test("404 returns an valid article_id which does not exist", () => {
+    return request(app)
+      .patch("/api/articles/100")
+      .send({ inc_votes: 50 })
+      .expect(404)
+      .then(({ body }) => {
+        const { message } = body;
+        expect(message).toBe("Article Id not found");
+      });
 });
-
-describe('GET /api/articles/:article_id/comments', () => {
-  test('200 accepts an article_id and responds with an array of comments for that given id ', () => {
-    return request(app)
-    .get("/api/articles/1/comments")
-    .expect(200)
-    .then(({body}) => {
-      const {comments} = body;
-      expect(comments).toHaveLength(11); 
-      expect(comments).toBeSorted({key: 'created_at', descending: true});
-      comments.forEach((comment) => {
-        expect(comment).toHaveProperty("comment_id", expect.any(Number));
-        expect(comment).toHaveProperty("votes", expect.any(Number));
-        expect(comment).toHaveProperty("created_at", expect.any(String));
-        expect(comment).toHaveProperty("author", expect.any(String));
-        expect(comment).toHaveProperty("body", expect.any(String));
-        expect(comment).toHaveProperty("article_id", expect.any(Number));
-      })
-    })
-  });
-  test('200 accepts an article_id and responds with an empty array to illustrate no comments on this article', () => {
-    return request(app)
-    .get("/api/articles/2/comments")
-    .expect(200)
-    .then(({body}) => {
-      const {comments} = body;
-      expect(comments).toEqual([]);
-    })
-  });
-  test('400 reject an article_id with an invalid type of request', () => {
-    return request(app)
-    .get("/api/articles/badRequest/comments")
+test("400 returns an valid article_id which does not exist", () => {
+  return request(app)
+    .patch("/api/articles/1")
+    .send({ invalidRequest: 6 })
     .expect(400)
-    .then(({body}) => {
-      expect(body.message).toBe("Bad Request");
-    })
-  });
-  test('404 reject an article_id that is valid but not found', () => {
-    return request(app)
-    .get("/api/articles/100/comments")
-    .expect(404)
-    .then(({body}) => {
-      expect(body.message).toBe("Not Found");
-    })
-  })
+    .then(({ body }) => {
+      const { message } = body;
+      expect(message).toBe("Bad Request");
+    });
+});
+test("400 returns an invalid article_id type (non-integer) which does not exist", () => {
+  return request(app)
+    .patch("/api/articles/banana")
+    .send({ invalidRequest: 6 })
+    .expect(400)
+    .then(({ body }) => {
+      const { message } = body;
+      expect(message).toBe("Bad Request");
+    });
+});
 });
 describe("POST /api/articles/:article_id/comments", () => {
   test("200 should add the comment inserted for the specified article_id", () => {
