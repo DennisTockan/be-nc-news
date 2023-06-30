@@ -251,3 +251,30 @@ describe("POST /api/articles/:article_id/comments", () => {
   });
 });
 
+describe('DELETE /api/comments/:comment_id', () => {
+  test('204 responds with a deleted comment and returns no content', () => {
+    return request(app)
+    .delete("/api/comments/1")
+    .expect(204)
+    .then((response)=> {
+      expect(response.statusCode).toBe(204)
+    })
+  });test('404 responds with an error due to comment_id being valid but not existing in the database', () => {
+    return request(app)
+    .delete("/api/comments/100")
+    .expect(404)
+    .then((response)=> {
+      expect(response.statusCode).toBe(404)
+      expect(response.body.message).toBe("Not Found")
+    })
+  });
+  test('400 responds with an error due to an invalid request', () => {
+    return request(app)
+    .delete("/api/comments/invalidRequest")
+    .expect(400)
+    .then((response)=> {
+      expect(response.statusCode).toBe(400);
+      expect(response.body.message).toBe("Bad Request")
+    })
+  });
+})
