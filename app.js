@@ -18,7 +18,6 @@ app.get("/api/", getAllApiEndpoints);
 
 app.get('/api/articles', getAllArticles);
 
-
 app.get("/api/users", getAllUsers);
 
 app.use(handlePsqlErrors);
