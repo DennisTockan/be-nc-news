@@ -108,7 +108,6 @@ describe('GET /api/articles/:article_id/comments', () => {
       .expect(200)
       .then(({ body }) => {
         const { articles } = body;
-        console.log(articles)
         expect(articles).toHaveLength(5); 
         expect(articles).toBeSorted({key: 'created_at', descending: true })
         articles.forEach((article) => {
@@ -121,7 +120,6 @@ describe('GET /api/articles/:article_id/comments', () => {
           expect(article).toHaveProperty("article_img_url", expect.any(String));
           expect(article).toHaveProperty("comment_count", expect.any(String));
         });
-
       });
   });
 });
