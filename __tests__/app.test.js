@@ -53,8 +53,9 @@ describe("GET /api/articles", () => {
       .expect(200)
       .then(({ body }) => {
         const { articles } = body;
-        expect(articles).toHaveLength(5);
-        expect(articles).toBeSorted({ key: "created_at", descending: true });
+        expect(articles).toHaveLength(5); 
+        expect(articles).toBeSorted({key: 'created_at', descending: true })
+
         articles.forEach((article) => {
           expect(article).toHaveProperty("author", expect.any(String));
           expect(article).toHaveProperty("title", expect.any(String));
