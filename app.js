@@ -6,6 +6,8 @@ const { getAllArticles, patchArticleIdsArticle} = require('./controllers/article
 const {getArticleIdComments, postArticleIdComment} = require('./controllers/article_id_comments.controllers')
 const { deletedComment } = require("./controllers/comment.controller");
 
+const { getAllUsers } = require("./controllers/users.controllers")
+
 const {
   handlePsqlErrors,
   handleCustomErrors,
@@ -26,6 +28,8 @@ app.patch("/api/articles/:article_id", patchArticleIdsArticle );
 app.post("/api/articles/:article_id/comments", postArticleIdComment);
 
 app.delete("/api/comments/:comment_id", deletedComment)
+
+app.get("/api/users", getAllUsers);
 
 app.use(handlePsqlErrors);
 
