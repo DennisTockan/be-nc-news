@@ -1,15 +1,17 @@
 
 const { selectAllArticles, selectPatchArticleIdsArticle } = require("../models/articles.model");
 
-exports.getAllArticles = (_, res, next) => {
-  selectAllArticles()
-    .then((articles) => {
-      res.status(200).send({ articles });
-    })
-    .catch((err) => {
-      next(err);
-    });
-};
+exports.getAllArticles = (req, res, next) => {
+  const {topic , sort_by, order} = req.query;
+  
+    selectAllArticles(topic, sort_by, order)
+      .then((articles) => {
+        res.status(200).send({ articles });
+      })
+      .catch((err) => {
+        next(err);
+      });
+  };
 
 exports.patchArticleIdsArticle = (req, res, next) => {
   const {article_id} = req.params;
