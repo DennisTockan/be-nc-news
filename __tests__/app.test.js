@@ -297,3 +297,63 @@ describe('DELETE /api/comments/:comment_id', () => {
     })
   });
 })
+describe("GET /api/articles", () => {
+  test("200 accept the topic query when filtering the articles by topic value", () => {
+    return request(app)
+      .get("/api/articles?topic=mitch")
+      .expect(200)
+      .then(({ body }) => {
+        const { articles } = body;
+        expect(articles).toHaveLength(4);
+        articles.forEach((article) => {
+          expect(article.topic).toEqual("mitch");
+        });
+      });
+  });
+  test("404 rejects the topic query when trying to filter the articles with an invalid query", () => {
+    return request(app)
+      .get("/api/articles?topic=bob")
+      .expect(404)
+      .then(({ body }) => {
+        const { articles } = body;
+        expect(body.message).toBe("Not Found")
+      });
+  });
+  test("200 accept the sort_by query which sorts the article_id by in descending order ", () => {
+    return request(app)
+      .get("/api/articles?sort_by=article_id")
+      .expect(200)
+      .then(({ body }) => {
+        const { articles } = body
+        expect(articles).toHaveLength(5);
+        expect(articles).toBeSortedBy("article_id", {descending: true});
+      });
+  });
+  test("400 response with an invalid sort query input", ()=> {
+    return request(app)
+    .get("/api/articles?sort_by=date_of_birth")
+    .expect(400)
+    .then(({body})=> {
+      expect(body.message).toBe("Invalid Sort Query")
+    })
+  });
+  test("200 response with an ordered query in ascending order of date (created_at)", () => {
+    return request(app)
+    .get("/api/articles?order=ASC")
+    .expect(200)
+    .then(({body})=> {
+      const {articles} = body
+      expect(articles).toHaveLength(5)
+      expect(articles).toBeSortedBy("created_at")
+    })
+  });
+  test("400 response with an invalid sort query input", ()=> {
+    return request(app)
+    .get("/api/articles?order=top_to_bottom")
+    .expect(400)
+    .then(({body})=> {
+      expect(body.message).toBe("Invalid Order Query")
+    })
+  });
+});
+
