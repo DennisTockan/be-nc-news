@@ -6,12 +6,12 @@ exports.selectArticleIdComments = async (article_id) => {
       `SELECT * FROM articles WHERE article_id = $1;`,
       [article_id]
     );
-    if (dbOutput.rows.length === 0){
+    if (dbOutput.rows.length === 0) {
       return Promise.reject({ status: 404, message: "Not Found" });
     }
   };
 
-const doesArticleIdExist = await checkExists(article_id);
+  const doesArticleIdExist = await checkExists(article_id);
   if (doesArticleIdExist) {
     return doesArticleIdExist;
   }

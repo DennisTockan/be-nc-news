@@ -20,13 +20,13 @@ exports.selectAllArticles = (topic, sort_by = "created_at", order = "DESC") => {
   if (topic) {
     queryValues.push(topic);
     query += `WHERE topic LIKE $1 `;
-  };
+  }
   if (!sort_by_values.includes(sort_by)) {
     return Promise.reject({ status: 400, message: "Invalid Sort Query" });
-  };
+  }
   if (!order_values.includes(order)) {
     return Promise.reject({ status: 400, message: "Invalid Order Query" });
-  };
+  }
 
   query += `GROUP BY articles.article_id ORDER BY ${sort_by} ${order};`;
   return db.query(query, queryValues).then(({ rows }) => {
@@ -36,10 +36,9 @@ exports.selectAllArticles = (topic, sort_by = "created_at", order = "DESC") => {
         message: "Not Found",
       });
     }
-    return rows
+    return rows;
   });
 };
-
 
 exports.selectPatchArticleIdsArticle = async (article_id, inc_votes) => {
   const checkArticleIdExists = async (article_id) => {
@@ -50,8 +49,7 @@ exports.selectPatchArticleIdsArticle = async (article_id, inc_votes) => {
 
     if (dbArticleId.rows.length === 0) {
       return Promise.reject({ status: 404, message: "Article Id not found" });
-    } 
-    else {
+    } else {
       const numOfVotes = dbArticleId.rows[0].votes;
       const insertQuery = `UPDATE articles SET votes = $1 WHERE article_id = $2 RETURNING *;`;
       return db
