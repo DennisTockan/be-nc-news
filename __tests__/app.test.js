@@ -310,7 +310,7 @@ describe("GET /api/articles", () => {
         });
       });
   });
-  test.only("404 rejects the topic query when trying to filter the articles with an invalid query", () => {
+  test("404 rejects the topic query when trying to filter the articles with an invalid query", () => {
     return request(app)
       .get("/api/articles?topic=bob")
       .expect(404)
