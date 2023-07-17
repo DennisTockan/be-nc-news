@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const { getAllTopics } = require("./controllers/topics.controllers");
 const { getAllApiEndpoints } = require("./controllers/api.controllers");
 const {
@@ -20,6 +21,8 @@ const {
   handleServersErrors,
 } = require("./errors");
 app.use(express.json()); // body parser for POST / PUT / PATCH
+
+app.use(cors());
 
 app.get("/api/topics", getAllTopics);
 
