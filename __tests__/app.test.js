@@ -102,6 +102,7 @@ describe("GET /api/articles/:article_id/comments", () => {
       });
   });
 });
+
 describe("GET /api/articles", () => {
   test("200 should respond with an article array or article objects with the correct properties", () => {
     return request(app)
@@ -124,6 +125,7 @@ describe("GET /api/articles", () => {
       });
   });
 });
+
 describe("PATCH: /api/articles/:article_id", () => {
   test("200 should increase the votes of the article by the incremented amount", () => {
     return request(app)
@@ -295,7 +297,7 @@ describe("DELETE /api/comments/:comment_id", () => {
       });
   });
 });
-describe("GET /api/articles", () => {
+art("GET /api/articles", () => {
   test("200 accept the topic query when filtering the articles by topic value", () => {
     return request(app)
       .get("/api/articles?topic=mitch")
