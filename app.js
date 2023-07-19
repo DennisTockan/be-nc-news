@@ -6,6 +6,7 @@ const { getAllApiEndpoints } = require("./controllers/api.controllers");
 const {
   getAllArticles,
   patchArticleIdsArticle,
+  getArticleById
 } = require("./controllers/articles.controllers");
 const {
   getArticleIdComments,
@@ -29,6 +30,8 @@ app.get("/api/topics", getAllTopics);
 app.get("/api/", getAllApiEndpoints);
 
 app.get("/api/articles", getAllArticles);
+
+app.get("/api/articles/:article_id", getArticleById)
 
 app.get("/api/articles/:article_id/comments", getArticleIdComments);
 

@@ -46,6 +46,8 @@ describe("GET /api", () => {
   });
 });
 
+
+
 describe("GET /api/articles", () => {
   test("200 should respond with an article array of article objects with the correct properties", () => {
     return request(app)
@@ -56,6 +58,45 @@ describe("GET /api/articles", () => {
       });
   });
 });
+
+describe("GET /api/articles/:article_id", () => {
+  test("200 accepts an article_id which responds with the specified article_id", () => {
+    return request(app)
+      .get("/api/articles/1")
+      .expect(200)
+      .then(({ body }) => {
+        const { article } = body;
+        expect(article.article_id).toEqual(1);
+        expect(article.title).toEqual("Living in the shadow of a great man");
+        expect(article.topic).toEqual("mitch");
+        expect(article.author).toEqual("butter_bridge");
+        expect(article.body).toEqual("I find this existence challenging");
+        expect(article.created_at).toEqual("2020-07-09T20:11:00.000Z");
+        expect(article.votes).toEqual(100);
+        expect(article.article_img_url).toEqual(
+          "https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg?w=700&h=700"
+        );
+        expect(article.comment_count).toEqual("11")
+      });
+  });
+  test("400 reject an article_id with an invalid type of request", () => {
+    return request(app)
+      .get("/api/articles/badpath")
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.message).toBe("Bad Request");
+      });
+  });
+  test("404 reject an article_id that is valid but not found", () => {
+    return request(app)
+      .get("/api/articles/100")
+      .expect(404)
+      .then(({ body }) => {
+        expect(body.message).toBe("Not Found");
+      });
+  });
+});
+
 
 describe("GET /api/articles/:article_id/comments", () => {
   test("200 accepts an article_id and responds with an array of comments for that given id ", () => {
@@ -297,7 +338,7 @@ describe("DELETE /api/comments/:comment_id", () => {
       });
   });
 });
-art("GET /api/articles", () => {
+describe("GET /api/articles", () => {
   test("200 accept the topic query when filtering the articles by topic value", () => {
     return request(app)
       .get("/api/articles?topic=mitch")
