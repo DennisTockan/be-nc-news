@@ -15,8 +15,7 @@ const {
 
 
 const seed = ({ topicData, userData, articleData, commentData }) => {
-  return db
-    .query(`DROP TABLE IF EXISTS comments;`)
+  return db.query(`DROP TABLE IF EXISTS comments;`)
     .then(() => {
       return db.query(`DROP TABLE IF EXISTS articles;`);
     })
@@ -67,7 +66,7 @@ const seed = ({ topicData, userData, articleData, commentData }) => {
       );`);
     })
     .then(() => {
-      const insertTopicsQueryStr = format(                           // formatting this to make it an array of arrays for values
+      const insertTopicsQueryStr = format(                                      // formatting this to make it an array of arrays for values
         "INSERT INTO topics (slug, description) VALUES %L;",
         topicData.map(({ slug, description }) => [slug, description])
       );
