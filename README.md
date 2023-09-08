@@ -1,12 +1,38 @@
 # Northcoders News API
 
-As any future developer will not able to have any access to the necessary environment variables, here are a list of instructions for those who wish to clone this work in the future.
+---
 
-- We must firstly download the 'dotenv' npm package that will handle the configuration of environment variables. [npm install dotenv].
-- Next, we must create a .env file, which will hold the variables for this project. 
-- We will then want to create a connection.js file, where we want to require in dotenv and invoke its configuration method which sets the environment variables from the .env file to the process.env.
+### Summary:
+The back-end API is hosted: https://nc-news-gmb6.onrender.com/api
 
-Should look similar to this
-require("dotenv").config({ path: `${__dirname}/../.env` });
+This project serves the purpose of creating a RESTful API which is designed to provide access to the multiple endpoints supported by the front-end news media web service, where the user can interact and manipulate the data stores within this SQL database with the CRUD operators
 
+---
 
+### Clone instructions:
+If you would like to run this project locally, please follow the steps below:
+
+Clone the repository:
+```
+git clone https://github.com/DennisTockan/be-nc-news.git
+```
+
+Navigate into the repo folder using `cd`
+
+Open your new repository on VSCode: 
+```
+code .
+```
+
+---
+
+### Installation of dependencies:
+
+To install all the required dependencies for this project, type the following code into your terminal: 
+```
+npm install
+```
+<!-- 
+cd into the project directory cd be-nc-news
+Run npm install to install packages listed in the package.json
+You will need to create two .env files for your project: .env.test and .env.development. Into .env.test, add PGDATABASE=nc_news_test; and into .env.development, add PGDATABASE=nc_news;. Double check that these .env files are .gitignored. -->
