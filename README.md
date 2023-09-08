@@ -12,27 +12,68 @@ This project serves the purpose of creating a RESTful API which is designed to p
 ### Clone instructions:
 If you would like to run this project locally, please follow the steps below:
 
-Clone the repository:
+1. Clone the repository:
 ```
 git clone https://github.com/DennisTockan/be-nc-news.git
 ```
 
-Navigate into the repo folder using `cd`
+2. Navigate into the repo folder using `cd`
 
-Open your new repository on VSCode: 
+3. Open your new repository on VSCode: 
 ```
 code .
 ```
-
 ---
 
 ### Installation of dependencies:
 
-To install all the required dependencies for this project, type the following code into your terminal: 
+To install all the required dependencies for this project listed in the package.json file, type the following code into your terminal: 
 ```
 npm install
 ```
-<!-- 
-cd into the project directory cd be-nc-news
-Run npm install to install packages listed in the package.json
-You will need to create two .env files for your project: .env.test and .env.development. Into .env.test, add PGDATABASE=nc_news_test; and into .env.development, add PGDATABASE=nc_news;. Double check that these .env files are .gitignored. -->
+---
+
+### Environment Variables Setup:
+
+Two new files will need to be created in the main directory. Name these two files `.env.test` and  `.env.development`.
+
+1. Inside the `.env.test` file, add the following code 
+```
+PGDATABASE=nc_news
+```
+
+2. Inside the `.env.development` file, add the following code 
+```
+PGDATABASE=nc_news_test
+```
+
+3. Add both of these .env files to the .gitignored file.
+
+4. Proceed to run setup scripts and begin development
+
+---
+## Seed local database:
+
+1. run the following code in the terminal to setup the initial database: 
+```
+npm run setup-dbs
+```
+2. run the following code in the terminal to seed the database with the provided data:
+```
+npm run seed
+```
+
+3. to seed the production database with data use:
+```
+npm run seed-prod
+```
+--- 
+### running tests:
+
+The Jest test suites can be run by using the following code along with an optional identifier for the file containing test suites to run:
+```
+npm test OPTIONAL_IDENTIFIER
+```
+
+---
+
