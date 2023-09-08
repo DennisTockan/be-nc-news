@@ -8,3 +8,5 @@ As any future developer will not able to have any access to the necessary enviro
 
 Should look similar to this
 require("dotenv").config({ path: `${__dirname}/../.env` });
+
+
