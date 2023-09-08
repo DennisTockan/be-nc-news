@@ -68,7 +68,7 @@ npm run seed
 npm run seed-prod
 ```
 --- 
-### running tests:
+### Running tests:
 
 The Jest test suites can be run by using the following code along with an optional identifier for the file containing test suites to run:
 ```
