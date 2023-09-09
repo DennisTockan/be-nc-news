@@ -1,7 +1,5 @@
 # Northcoders News API
 
----
-
 ### Summary:
 The back-end API is hosted: https://nc-news-gmb6.onrender.com/api
 
