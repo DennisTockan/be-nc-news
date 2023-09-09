@@ -54,16 +54,16 @@ PGDATABASE=nc_news_test
 ---
 ## Seed local database:
 
-1. run the following code in the terminal to setup the initial database: 
+1. Run the following code in the terminal to setup the initial database: 
 ```
 npm run setup-dbs
 ```
-2. run the following code in the terminal to seed the database with the provided data:
+2. Run the following code in the terminal to seed the database with the provided data:
 ```
 npm run seed
 ```
 
-3. to seed the production database with data use:
+3. To seed the production database with data use:
 ```
 npm run seed-prod
 ```
