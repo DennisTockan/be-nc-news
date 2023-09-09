@@ -33,7 +33,7 @@ npm install
 ```
 ---
 
-### Environment Variables Setup:
+### Environment variables setup:
 
 Two new files will need to be created in the main directory. Name these two files `.env.test` and  `.env.development`.
 
