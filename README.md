@@ -18,7 +18,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 ---
 1. [Project Overview](#Project-Overview)
 2. [Features](#Features)
-3. [Technologies Used](#Technologies-Used)
+3. [Technologies & Development Tools](#Technologies-&-Development-Tools)
 4. [Getting Started](#Getting-Started)
    - [Prerequisites](#Prerequisites)
    - [Installation](#Installation)
@@ -43,25 +43,23 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 
 <br>
 
-### Technologies Used
+### Technologies & Development Tools
 ---
-#### Back-end tech:
-- f
-- f
-- f
-- f
-  
-#### Front-end tech:
-- f
-- f
-- f
-- f
+#### Technologies USed:
+- JavaScript
+- PostgreSQL
+- HTML
+- CSS
+- JavaScript
+- React (with hooks)
+- Material UI
 
 #### Development tools
-- f
-- f
-- f
-- f
+- VS Code
+- Git
+- Github
+- Insomnia
+- Axios
 
  <br>
 
