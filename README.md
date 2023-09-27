@@ -15,6 +15,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 <br>
 
 ### Table of Contents
+---
 1. [Project Overview](#Project-Overview)
 2. [Features](#Features)
 3. [Technologies Used](#Technologies-Used)
