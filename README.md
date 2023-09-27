@@ -62,8 +62,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 
  <br>
  
- ### Getting Started
- ---
+### Getting Started
 ---
 
 ### Clone instructions:
@@ -83,15 +82,16 @@ code .
 ---
 
 ### Installation of dependencies:
+---
 
 To install all the required dependencies for this project listed in the package.json file, type the following code into your terminal: 
 ```
 npm install
 ```
----
+
 
 ### Environment variables setup:
-
+---
 Two new files will need to be created in the main directory. Name these two files `.env.test` and  `.env.development`.
 
 1. Inside the `.env.test` file, add the following code 
@@ -108,9 +108,9 @@ PGDATABASE=nc_news_test
 
 4. Proceed to run setup scripts and begin development
 
----
-## Seed local database:
 
+## Seed local database:
+---
 1. Run the following code in the terminal to setup the initial database: 
 ```
 npm run setup-dbs
@@ -124,9 +124,9 @@ npm run seed
 ```
 npm run seed-prod
 ```
---- 
-### Running tests:
 
+### Running tests:
+---
 The Jest test suites can be run by using the following code along with an optional identifier for the file containing test suites to run:
 ```
 npm test OPTIONAL_IDENTIFIER
@@ -134,7 +134,7 @@ npm test OPTIONAL_IDENTIFIER
 
 ---
 
-![Screenshot 2023-09-27 at 11 39 04](https://github.com/DennisTockan/be-nc-news/assets/130880613/ec39ac0a-3c54-4d53-a2be-538c67269fe8)
+
 
 
 ### This is probably the apporach
