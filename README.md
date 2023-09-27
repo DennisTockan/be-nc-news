@@ -1,5 +1,7 @@
 # Northcoders News API 👨‍💻
 
+![Screenshot 2023-09-27 at 19 47 56](https://github.com/DennisTockan/be-nc-news/assets/130880613/1182f6bd-0bc6-47eb-ad54-88f6ae832ceb)
+
 ## Project Overview
 
 Welcome to the NC News Forum! This is my inaugural project where I've dedicated two weeks to build a news forum application with JavaScript, Node.js, PostgreSQL for the backend, and React for the frontend. 
