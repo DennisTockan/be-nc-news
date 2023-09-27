@@ -33,7 +33,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 7. [Lessons and Obstacles](#Lessons-and-Obstacles)
 
 ## Features
----
+
 - User registration and authentication
 - Posting and commenting on news articles
 - Upvoting and downvoting articles and comments
@@ -43,7 +43,6 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 
 
 ## Technologies & Development Tools
-
 ### Technologies Used:
 - JavaScript
 - HTML
@@ -58,12 +57,10 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 - Git
 - Github
 - Insomnia
-
- <br>
  
 ## Getting Started
 ### Clone instructions:
----
+----
 If you would like to run this project locally, please follow the steps below:
 
 1. Clone the repository:
@@ -78,7 +75,6 @@ git clone https://github.com/DennisTockan/be-nc-news.git
 code .
 ```
 
-
 ### Installation of dependencies:
 ---
 
@@ -86,7 +82,6 @@ To install all the required dependencies for this project listed in the package.
 ```
 npm install
 ```
-
 
 ### Environment variables setup:
 ---
