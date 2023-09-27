@@ -45,13 +45,13 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 
 ### Technologies & Development Tools
 ---
-#### Technologies USed:
+#### Technologies Used:
 - JavaScript
-- PostgreSQL
 - HTML
 - CSS
-- JavaScript
+- PostgreSQL
 - React (with hooks)
+- Axios
 - Material UI
 
 #### Development tools
@@ -59,7 +59,6 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 - Git
 - Github
 - Insomnia
-- Axios
 
  <br>
 
