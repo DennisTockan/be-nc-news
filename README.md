@@ -32,10 +32,8 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 6. [Triumphs](#Triumphs)
 7. [Lessons and Obstacles](#Lessons-and-Obstacles)
 
-<br>
-
 ## Features
-
+---
 - User registration and authentication
 - Posting and commenting on news articles
 - Upvoting and downvoting articles and comments
@@ -43,7 +41,6 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 - Search functionality to find specific articles
 - User profiles with activity history
 
-<br>
 
 ## Technologies & Development Tools
 
@@ -111,7 +108,7 @@ PGDATABASE=nc_news_test
 
 
 ### Seed local database:
-
+---
 1. Run the following code in the terminal to setup the initial database: 
 ```
 npm run setup-dbs
@@ -127,7 +124,7 @@ npm run seed-prod
 ```
 
 ### Running tests:
-
+---
 The Jest test suites can be run by using the following code along with an optional identifier for the file containing test suites to run:
 ```
 npm test OPTIONAL_IDENTIFIER
