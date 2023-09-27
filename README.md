@@ -13,11 +13,11 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 ##### Click [here](https://nc-news-gmb6.onrender.com/api) to access the hosted back-end API
 
 
-## Table of Contents:
+## Table of Contents
 ---
 1. [Project Overview](#Project-Overview)
 2. [Features](#Features)
-3. [Technology Used](#Technology-Used)
+3. [Technologies Used](#Technologies-Used)
 4. [Getting Started](#Getting-Started)
    - [Prerequisites](#Prerequisites)
    - [Installation](#Installation)
