@@ -17,7 +17,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 <br>
 
 ## Table of Contents
----
+
 1. [Project Overview](#Project-Overview)
 2. [Features](#Features)
 3. [Technologies & Development Tools](#Technologies-&-Development-Tools)
@@ -35,7 +35,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 <br>
 
 ## Features
----
+
 - User registration and authentication
 - Posting and commenting on news articles
 - Upvoting and downvoting articles and comments
@@ -46,7 +46,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 <br>
 
 ## Technologies & Development Tools
----
+
 ### Technologies Used:
 - JavaScript
 - HTML
@@ -65,7 +65,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
  <br>
  
 ## Getting Started
----
+
 
 ### Clone instructions:
 If you would like to run this project locally, please follow the steps below:
@@ -81,7 +81,7 @@ git clone https://github.com/DennisTockan/be-nc-news.git
 ```
 code .
 ```
----
+
 
 ### Installation of dependencies:
 ---
