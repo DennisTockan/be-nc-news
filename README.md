@@ -133,8 +133,8 @@ npm test OPTIONAL_IDENTIFIER
 ```
 
 ---
-![image](https://github.com/DennisTockan/be-nc-news/assets/130880613/46042987-6bfc-46d3-9498-6ba1a3b16097)
 
+![Screenshot 2023-09-27 at 11 39 04](https://github.com/DennisTockan/be-nc-news/assets/130880613/ec39ac0a-3c54-4d53-a2be-538c67269fe8)
 
 
 ### This is probably the apporach
