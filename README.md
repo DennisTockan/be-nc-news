@@ -1,6 +1,5 @@
 # Northcoders News API 👨‍💻
 
-### Summary:
 
 Welcome to the NC News Forum project! This is my inaugural project where I've dedicated two week to building a news forum application with JavaScript, Node.js, PostgreSQL for the backend, and React for the frontend. 
 
@@ -10,23 +9,23 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 
 Click here to access the hosted front-end SPA : ...
 
-Click here to access the hosted back-end API: https://nc-news-gmb6.onrender.com/api
+### Click [here](https://nc-news-gmb6.onrender.com/api) to access the hosted back-end API
 
 ---
 ### Table of Contents:
 1. [Introduction](#Introduction)
-2. [Features](#)
-3. [Technology Used](#)
-4. [Getting Started](#)
-   - [Prerequisites](#)
-   - [Installation](#)
-5. [The Approach](#)
-   - [Planning](#)
-   - [The API](#)
-   - [Backend](#)
-   - [Frontend](#)
-6. [Triumphs](#)
-7. [Lessons and Obstacles](#)
+2. [Features](#Features)
+3. [Technology Used](#Technology-Used)
+4. [Getting Started](#Getting-Started)
+   - [Prerequisites](#Prerequisites)
+   - [Installation](#Installation)
+5. [The Approach](#The-Approach)
+   - [Planning](#Planning)
+   - [The API](#The-API)
+   - [Backend](#Backend)
+   - [Frontend](#Frontend)
+6. [Triumphs](#Triumphs)
+7. [Lessons and Obstacles](#Lessons-and-Obstacles)
    
 ---
 ### Introduction
