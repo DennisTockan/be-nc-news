@@ -16,7 +16,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 
 <br>
 
-### Table of Contents
+## Table of Contents
 ---
 1. [Project Overview](#Project-Overview)
 2. [Features](#Features)
@@ -34,7 +34,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 
 <br>
 
-### Features
+## Features
 ---
 - User registration and authentication
 - Posting and commenting on news articles
@@ -45,9 +45,9 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 
 <br>
 
-### Technologies & Development Tools
+## Technologies & Development Tools
 ---
-#### Technologies Used:
+### Technologies Used:
 - JavaScript
 - HTML
 - CSS
@@ -56,7 +56,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 - Axios
 - Material UI
 
-#### Development tools
+### Development tools
 - VS Code
 - Git
 - Github
@@ -64,7 +64,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 
  <br>
  
-### Getting Started
+## Getting Started
 ---
 
 ### Clone instructions:
