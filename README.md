@@ -60,7 +60,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
  
 ## Getting Started
 ### Clone instructions:
-----
+--
 If you would like to run this project locally, please follow the steps below:
 
 1. Clone the repository:
