@@ -6,7 +6,7 @@ Welcome to the NC News Forum project! This is my inaugural project where I've de
 
 The NC News Forum project is a web application that allows users to discuss and share news articles on various topics. It provides a platform for meaningful conversations and staying updated on current events. This project is the result of two weeks of dedicated work, leveraging the power of JavaScript, Node.js and PostgreSQL for the backend, and React for the front end.
 
-Reflecting on this journey, I was armed with nothing but enthusiasm and the foundational knowledge of JavaScript, Node.js, PostgreSQL and React. Now, as I present this project, I take immense pride in the progress made and the skills honed in this short span of two weeks. It stands as a testament to the potential unlocked through dedication and learning, a milestone on my path to becoming a proficient web developer. 
+Reflecting on my first full-stack project as a software developer, I'm proud of the rapid progress and newfound skills I've acquired. Despite having learned Node, React, and SQL just a week before project completion, I quickly became proficient with these frameworks and relational databases.
 
 Click here to access the hosted front-end SPA : ...
 
