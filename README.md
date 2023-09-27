@@ -7,9 +7,9 @@ The NC News Forum project is a web application that allows users to discuss and 
 
 Reflecting on my first full-stack project as a software developer, I'm proud of the rapid progress and newfound skills I've acquired. Despite having learned Node, React, and SQL just a week before project completion, I quickly became proficient with these frameworks and relational databases.
 
-### Click [here]() to access the hosted front-end SPA
+#### Click [here]() to access the hosted front-end SPA
 
-### Click [here](https://nc-news-gmb6.onrender.com/api) to access the hosted back-end API
+#### Click [here](https://nc-news-gmb6.onrender.com/api) to access the hosted back-end API
 
 ---
 ## Table of Contents:
