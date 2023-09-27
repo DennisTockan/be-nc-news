@@ -12,6 +12,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 
 #### Click [here](https://nc-news-gmb6.onrender.com/api) to access the hosted back-end API
 
+<br>
 
 ### Table of Contents
 1. [Project Overview](#Project-Overview)
