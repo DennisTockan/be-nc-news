@@ -111,8 +111,8 @@ PGDATABASE=nc_news_test
 4. Proceed to run setup scripts and begin development
 
 
-## Seed local database:
----
+### Seed local database:
+
 1. Run the following code in the terminal to setup the initial database: 
 ```
 npm run setup-dbs
@@ -128,13 +128,13 @@ npm run seed-prod
 ```
 
 ### Running tests:
----
+
 The Jest test suites can be run by using the following code along with an optional identifier for the file containing test suites to run:
 ```
 npm test OPTIONAL_IDENTIFIER
 ```
 
----
+
 
 
 
