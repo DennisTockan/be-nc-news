@@ -155,7 +155,7 @@ Trello:
 ### Express and MVC
 In this project, I leveraged the Express.js framework, a powerful and widely adopted Node.js framework, to simplify and streamline the development of our backend. Express provides us with a robust set of tools and features for routing, middleware, and more, making it an ideal choice for building RESTful APIs. 
 
-`
+```
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -196,5 +196,5 @@ app.use(handlePsqlErrors);
 app.use(handleCustomErrors);
 app.use(handleServersErrors);
 module.exports = app;
-`
+```
 
