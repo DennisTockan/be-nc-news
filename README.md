@@ -2,13 +2,12 @@
 
 ![Screenshot 2023-09-27 at 19 47 56](https://github.com/DennisTockan/be-nc-news/assets/130880613/1182f6bd-0bc6-47eb-ad54-88f6ae832ceb)
 
+Welcome to the NC News Forum! This project represents my inaugural journey into the world of full-stack development. Over the course of two intense weeks, I gave my all into crafting a news forum application powered by JavaScript, Node.js, and PostgreSQL for the backend, and React for the frontend.
+
 ## Project Overview
+NC News Forum is a dynamic web application designed to facilitate engaging discussions and the sharing of news articles spanning various topics. It serves as a platform for meaningful conversations and a reliable source of updates on current events. This project stands as a testament to the strides I've made as a software developer, with rapid progress and newfound expertise in JavaScript, Node.js, SQL, and React.
 
-Welcome to the NC News Forum! This is my inaugural project where I've dedicated two weeks to build a news forum application with JavaScript, Node.js, PostgreSQL for the backend, and React for the frontend. 
 
-This news forum is a web application that allows users to discuss and share news articles on various topics. It provides a platform for meaningful conversations and staying updated on current events. This project is the result of two weeks of dedicated work, leveraging the power of JavaScript, Node.js and PostgreSQL for the backend, and React for the front end.
-
-Reflecting on my first full-stack project as a software developer, I'm proud of the rapid progress and newfound skills I've acquired. Despite having learned Node, React, and SQL just a week before project completion, I quickly became proficient with these frameworks and relational databases.
 
 #### Explore the Project:
 
