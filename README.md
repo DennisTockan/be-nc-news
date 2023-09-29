@@ -207,10 +207,18 @@ module.exports = app;
 
 ### MVC
 ---
-The project adopted the Model-View-Controller (MVC) pattern to efficiently manage various aspects of the application. MVC separates responsibilities into distinct components:
+The project adopted the Model-View-Controller (MVC) pattern to efficiently manage various aspects of the application, categorising the functions to make the codebase neat and managable. 
 
-Controller: Handles client requests, utilizes request information to interact with the model, and responds to the client with relevant data.
+The MVC Flow chart is a visual representation of the structure the backend project follows: 
 
-Model: Manages data operations like retrieval, updating, creation, and deletion, delivering data to the controller in the required format.
+![image](https://github.com/DennisTockan/be-nc-news/assets/130880613/3d790789-a5df-4a27-9e71-75793bd3f58a)
 
-This approach is essential for maintaining an organized directory structure, ensuring that as the project grows, it remains scalable and easy to extend with new functions. By categorizing functions into separate directories for controllers and models, the codebase remains modular and manageable.
+MVC separates responsibilities into distinct components:
+
+- Controller: Handles client requests, utilizes request information to interact with the model, and responds to the client with relevant data.
+
+- Model: Manages data operations like retrieval, updating, creation, and deletion, delivering data to the controller in the required format.
+  
+
+
+
