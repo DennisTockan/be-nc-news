@@ -138,7 +138,7 @@ This level of interaction is made possible through the incorporation of the CRUD
 
 ### Defining my MVP
 ---
-Before getting started on building API for the backend, I had to decide on the core functionality that I thought would be essential for the project to be useful and valuable. I decided to use Trello to create, visualise and organise the tickets for my project required in my MVP.
+Before getting started on building API for the backend, I had to decide on the core functionality that I thought would be essential for the project to be useful and valuable. I decided to use Trello to create, visualise and organise the tickets for my project required in my MVP. After several iterations, this was the decided tickets for my project.
 
 Trello: 
 
