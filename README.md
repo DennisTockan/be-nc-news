@@ -141,7 +141,7 @@ This level of interaction is made possible through the incorporation of the CRUD
 Before getting started on building API for the backend, I had to decide on the core functionality that I thought would be essential for the project to be useful and valuable. 
 
 The MVP aimed to deliver essential features necessary for a fully functional News Forum: 
-- Getting All Articles
+- Getting All Articles - We use the `/api/articles` endpoint to fetch the latest news articles, ensuring our forum is always up to date.
 - Filtering Artilces by Category
 - Posting and Deleting Comments
 - Upvoting and Downvoting Articles
