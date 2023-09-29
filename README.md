@@ -141,9 +141,9 @@ This level of interaction is made possible through the incorporation of the CRUD
 Before getting started on building API for the backend, I had to decide on the core functionality that I thought would be essential for the project to be useful and valuable. 
 
 The MVP aimed to deliver essential features necessary for a fully functional News Forum: 
-- Getting All Articles - We use the `/api/articles` endpoint to fetch the latest news articles, ensuring our forum is always up to date.
+- Getting All Articles 
 - Filtering Artilces by Category
-- Posting and Deleting Comments
+- Posting and Deleting Comments 
 - Upvoting and Downvoting Articles
 
 I decided to use Trello to create, visualise and organise the tickets for my project required in my MVP. After several iterations, this was the decided tickets for my project.
@@ -152,5 +152,49 @@ Trello:
 
 ![Screenshot 2023-09-29 at 18 58 04](https://github.com/DennisTockan/be-nc-news/assets/130880613/f6fb4ce2-4c1b-4200-bf9d-6cbb3de7b53b)
 
+### Express and MVC
+In this project, I leveraged the Express.js framework, a powerful and widely adopted Node.js framework, to simplify and streamline the development of our backend. Express provides us with a robust set of tools and features for routing, middleware, and more, making it an ideal choice for building RESTful APIs. 
 
+`
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const { getAllTopics } = require("./controllers/topics.controllers");
+const { getAllApiEndpoints } = require("./controllers/api.controllers");
+const {
+  getAllArticles,
+  patchArticleIdsArticle,
+  getArticleById
+      } = require("./controllers/articles.controllers");
+const {
+  getArticleIdComments,
+  postArticleIdComment,
+      } = require("./controllers/article_id_comments.controllers");
+const { deletedComment } = require("./controllers/comment.controller");
+
+const { getAllUsers } = require("./controllers/users.controllers");
+
+const {
+  handlePsqlErrors,
+  handleCustomErrors,
+  handleServersErrors,
+      } = require("./errors");
+app.use(express.json()); // body parser for POST / PUT / PATCH
+
+app.use(cors());
+
+app.get("/api/topics", getAllTopics);
+app.get("/api/", getAllApiEndpoints);
+app.get("/api/articles", getAllArticles);
+app.get("/api/articles/:article_id", getArticleById)
+app.get("/api/articles/:article_id/comments", getArticleIdComments);
+app.patch("/api/articles/:article_id", patchArticleIdsArticle);
+app.post("/api/articles/:article_id/comments", postArticleIdComment);
+app.delete("/api/comments/:comment_id", deletedComment);
+app.get("/api/users", getAllUsers);
+app.use(handlePsqlErrors);
+app.use(handleCustomErrors);
+app.use(handleServersErrors);
+module.exports = app;
+`
 
