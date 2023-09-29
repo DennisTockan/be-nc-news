@@ -138,9 +138,19 @@ This level of interaction is made possible through the incorporation of the CRUD
 
 ### Defining my MVP
 ---
-Before getting started on building API for the backend, I had to decide on the core functionality that I thought would be essential for the project to be useful and valuable. I decided to use Trello to create, visualise and organise the tickets for my project required in my MVP. After several iterations, this was the decided tickets for my project.
+Before getting started on building API for the backend, I had to decide on the core functionality that I thought would be essential for the project to be useful and valuable. 
+
+The MVP aimed to deliver essential features necessary for a fully functional News Forum: 
+- Getting All Articles
+- Filtering Artilces by Category
+- Posting and Deleting Comments
+- Upvoting and Downvoting Articles
+
+I decided to use Trello to create, visualise and organise the tickets for my project required in my MVP. After several iterations, this was the decided tickets for my project.
 
 Trello: 
 
-![Screenshot 2023-09-29 at 18 37 27](https://github.com/DennisTockan/be-nc-news/assets/130880613/044efb59-1e2d-4e20-a593-edc33dbfccd7)
+![Screenshot 2023-09-29 at 18 58 04](https://github.com/DennisTockan/be-nc-news/assets/130880613/f6fb4ce2-4c1b-4200-bf9d-6cbb3de7b53b)
+
+
 
