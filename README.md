@@ -52,7 +52,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 - Axios - HTTP client for making API requests.
 - Material UI - UI framework for building a modern and responsive user interface.
 
-### Development tools
+### Development Tools
 - VS Code - Code editor for development.
 - Git - Version control system for tracking changes.
 - Github - Platform for hosting and collaborating on code.
@@ -61,7 +61,7 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 
 
 ## Getting Started
-### Clone instructions:
+### Clone Instructions:
 ---
 If you would like to run this project locally, please follow the steps below:
 
@@ -70,59 +70,58 @@ If you would like to run this project locally, please follow the steps below:
 git clone https://github.com/DennisTockan/be-nc-news.git
 ```
 
-2. Navigate into the repo folder using `cd`
+2. Navigate into the repository folder using
+```
+cd be-nc-news
+```
 
-3. Open your new repository on VSCode: 
+3. Open your new repository in VSCode:
 ```
 code .
 ```
 
-### Installation of dependencies:
+### Installation of Dependencies:
 ---
 
-To install all the required dependencies for this project listed in the package.json file, type the following code into your terminal: 
+Install all the required dependencies listed in the package.json file by running the following command in your terminal:
 ```
 npm install
 ```
 
-### Environment variables setup:
+### Environment Variables Setup:
 ---
 Two new files will need to be created in the main directory. Name these two files `.env.test` and  `.env.development`.
 
-1. Inside the `.env.test` file, add the following code 
+#### Inside .env.test:
 ```
 PGDATABASE=nc_news
 ```
 
-2. Inside the `.env.development` file, add the following code 
+#### Inside .env.development:
 ```
 PGDATABASE=nc_news_test
 ```
 
-3. Add both of these .env files to the .gitignored file.
+Make sure to include both .env files in your .gitignore to keep sensitive data safe.
 
-4. Proceed to run setup scripts and begin development
-
-
-### Seed local database:
+### Proceed to Run Setup Scripts and Begin Development
 ---
-1. Run the following code in the terminal to setup the initial database: 
+1. Seed the local database:
 ```
 npm run setup-dbs
 ```
-2. Run the following code in the terminal to seed the database with the provided data:
+2. Seed the database with initial data:
 ```
 npm run seed
 ```
-
-3. To seed the production database with data use:
+3. For seeding the production database with data:
 ```
 npm run seed-prod
 ```
 
-### Running tests:
+### Running Tests:
 ---
-The Jest test suites can be run by using the following code along with an optional identifier for the file containing test suites to run:
+Execute Jest test suites using the following command, optionally providing an identifier for the file containing test suites to run:
 ```
 npm test OPTIONAL_IDENTIFIER
 ```
