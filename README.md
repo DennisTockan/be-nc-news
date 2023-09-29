@@ -44,19 +44,19 @@ Reflecting on my first full-stack project as a software developer, I'm proud of 
 
 ## Technologies & Development Tools
 ### Technologies Used:
-- JavaScript
-- HTML
-- CSS
-- PostgreSQL
-- React (with hooks)
-- Axios
-- Material UI
+- JavaScript - Used for server-side and client-side scripting.
+- HTML - Markup language for creating web pages.
+- CSS - Styling language for designing the user interface.
+- PostgreSQL - Relational database for data storage.
+- React (with hooks) - JavaScript library for building the frontend.
+- Axios - HTTP client for making API requests.
+- Material UI - UI framework for building a modern and responsive user interface.
 
 ### Development tools
-- VS Code
-- Git
-- Github
-- Insomnia  
+- VS Code - Code editor for development.
+- Git - Version control system for tracking changes.
+- Github - Platform for hosting and collaborating on code.
+- Insomnia - API testing tool for debugging and testing API endpoints.
 <br>
 
 
