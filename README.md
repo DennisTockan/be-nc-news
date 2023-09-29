@@ -152,34 +152,40 @@ Trello:
 
 ![Screenshot 2023-09-29 at 18 58 04](https://github.com/DennisTockan/be-nc-news/assets/130880613/f6fb4ce2-4c1b-4200-bf9d-6cbb3de7b53b)
 
-### Express and MVC
-In this project, I leveraged the Express.js framework, a powerful and widely adopted Node.js framework, to simplify and streamline the development of our backend. Express provides us with a robust set of tools and features for routing, middleware, and more, making it an ideal choice for building RESTful APIs. 
+<br> 
+
+### Express
+---
+In this project, I leveraged the Express.js framework, a powerful and widely adopted Node.js framework, to simplify and streamline the development of our backend. Express provides us with a robust set of tools and features for rdefining routes and handling different HTTP methods (GET, POST, PUT & DELETE) making it an ideal choice for building RESTful APIs. 
 
 ```
 const express = require("express");
+
 const app = express();
-const cors = require("cors");
+
 const { getAllTopics } = require("./controllers/topics.controllers");
+
 const { getAllApiEndpoints } = require("./controllers/api.controllers");
+
 const {
+  getArticleById,
   getAllArticles,
-  patchArticleIdsArticle,
-  getArticleById
-      } = require("./controllers/articles.controllers");
-const {
   getArticleIdComments,
   postArticleIdComment,
-      } = require("./controllers/article_id_comments.controllers");
+  patchArticleIdsArticle
+} = require("./controllers/articles.controllers");
+
 const { deletedComment } = require("./controllers/comment.controller");
 
-const { getAllUsers } = require("./controllers/users.controllers");
+const { getAllUsers } = require("./controllers/users.controllers")
 
 const {
   handlePsqlErrors,
   handleCustomErrors,
   handleServersErrors,
-      } = require("./errors");
-app.use(express.json()); // body parser for POST / PUT / PATCH
+} = require("./errors");
+
+app.use(express.json()); 
 
 app.use(cors());
 
@@ -197,4 +203,14 @@ app.use(handleCustomErrors);
 app.use(handleServersErrors);
 module.exports = app;
 ```
+<br>
 
+### MVC
+---
+The project adopted the Model-View-Controller (MVC) pattern to efficiently manage various aspects of the application. MVC separates responsibilities into distinct components:
+
+Controller: Handles client requests, utilizes request information to interact with the model, and responds to the client with relevant data.
+
+Model: Manages data operations like retrieval, updating, creation, and deletion, delivering data to the controller in the required format.
+
+This approach is essential for maintaining an organized directory structure, ensuring that as the project grows, it remains scalable and easy to extend with new functions. By categorizing functions into separate directories for controllers and models, the codebase remains modular and manageable.
