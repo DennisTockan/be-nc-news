@@ -22,8 +22,10 @@ NC News Forum is a dynamic web application designed to facilitate engaging discu
 2. [Features](#Features)
 3. [Technologies & Development Tools](#Technologies-&-Development-Tools)
 4. [Getting Started](#Getting-Started)
-   - [Prerequisites](#Prerequisites)
-   - [Installation](#Installation)
+   - [Clone Instructions](#Clone-Instructions)
+   - [Installation of Dependencies](#Installation-of-Dependencies)
+   - [Environment Variables Setup](#Environment-Variables-Setup)
+   - [](#Proceed-to-Run-Setup-Scripts-and-Begin-Development)
 5. [The Approach](#The-Approach)
    - [Planning](#Planning)
    - [The API](#The-API)
@@ -126,11 +128,19 @@ Execute Jest test suites using the following command, optionally providing an id
 npm test OPTIONAL_IDENTIFIER
 ```
 
+## The Approach
+### The Application Programming Interface (API)
+---
 
+The primary object for the backend project is to establish and create my very own robust RESTful API. This API has been meticulously designed to provide a wide range of endpoints, all of which integrate with the frontend news media web service. These endpoints empower users by giving them the ability to interact with and manage the data stored within the PostgreSQL database.
 
+This level of interaction is made possible through the incorporation of the CRUD (Create, Read, Update, and Delete) operations. These allow users to not only access but also manipulate the data according to their individual requirements and preferences. In essence, this API serves a flexible and dynamic bridge between users and the underlying database, enabling them to shape and customize the data to suit their specific needs.
 
+### Defining my MVP
+---
+Before getting started on building API for the backend, I had to decide on the core functionality that I thought would be essential for the project to be useful and valuable. I decided to use Trello to create, visualise and organise the tickets for my project required in my MVP.
 
+Trello: 
 
-### This is probably the apporach
+![Screenshot 2023-09-29 at 18 37 27](https://github.com/DennisTockan/be-nc-news/assets/130880613/044efb59-1e2d-4e20-a593-edc33dbfccd7)
 
-The primary objective of the backend project is to establish a robust RESTful API. This API has been meticulously crafted to offer a comprehensive array of endpoints, which aligns with the frontend news media web service. Through these endpoints, users are empowered with the capability to engage with and exert control over the data contained within the PostgreSQL database. This has become possible withuse of the versatile CRUD (Create, Read, Update & Delete) operations, affording users the ability to shape and mold the data to their specific needs and preferences.
