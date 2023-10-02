@@ -11,7 +11,7 @@ NC News Forum is a dynamic web application designed to facilitate engaging discu
 
 #### Explore the Project:
 
-#### Frontend SPA: [Access Here]()
+#### Frontend SPA: [Access Here](https://ncsubsidiarynews.netlify.app/)
 #### Backend API: [Access Here](https://nc-news-gmb6.onrender.com/api)
 
 <br>
