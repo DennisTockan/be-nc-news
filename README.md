@@ -68,17 +68,17 @@ NC News Forum is a dynamic web application designed to facilitate engaging discu
 If you would like to run this project locally, please follow the steps below:
 
 1. Clone the repository:
-```
+```js
 git clone https://github.com/DennisTockan/be-nc-news.git
 ```
 
 2. Navigate into the repository folder using
-```
+```js
 cd be-nc-news
 ```
 
 3. Open your new repository in VSCode:
-```
+```js
 code .
 ```
 
@@ -86,7 +86,7 @@ code .
 ---
 
 Install all the required dependencies listed in the package.json file by running the following command in your terminal:
-```
+```js
 npm install
 ```
 
@@ -95,12 +95,12 @@ npm install
 Two new files will need to be created in the main directory. Name these two files `.env.test` and  `.env.development`.
 
 #### Inside .env.test:
-```
+```js
 PGDATABASE=nc_news
 ```
 
 #### Inside .env.development:
-```
+```js
 PGDATABASE=nc_news_test
 ```
 
@@ -109,22 +109,22 @@ Make sure to include both .env files in your .gitignore to keep sensitive data s
 ### Proceed to Run Setup Scripts and Begin Development
 ---
 1. Seed the local database:
-```
+```js
 npm run setup-dbs
 ```
 2. Seed the database with initial data:
-```
+```js
 npm run seed
 ```
 3. For seeding the production database with data:
-```
+```js
 npm run seed-prod
 ```
 
 ### Running Tests:
 ---
 Execute Jest test suites using the following command, optionally providing an identifier for the file containing test suites to run:
-```
+```js
 npm test OPTIONAL_IDENTIFIER
 ```
 
@@ -158,7 +158,7 @@ Trello:
 ---
 In this project, I leveraged the Express.js framework, a powerful and widely adopted Node.js framework, to simplify and streamline the development of our backend. Express provides us with a robust set of tools and features for rdefining routes and handling different HTTP methods (GET, POST, PUT & DELETE) making it an ideal choice for building RESTful APIs. 
 
-```
+```js
 const express = require("express");
 
 const app = express();
@@ -219,11 +219,13 @@ The MVC Flow chart is a visual representation of the structure the backend proje
 
 - Model: Manages data operations like retrieval, updating, creation, and deletion, delivering data to the controller in the required format.
 
+![image](https://github.com/DennisTockan/be-nc-news/assets/130880613/2cd613e4-cdce-489b-9f7f-57dda524817c)
+
 <br> 
  
-In the MVC structure, the user first interacts with the view, triggering an event or request. This request is then directed to the controller. In the example below demonstrates a scenario where a user wants to retrieve an article by its unique ID. In the controller, there's a specific route handler, getArticleById, which extracts the article_id from the request parameters. Here's the controller code:
+In the Model-View-Controller (MVC) architecture, the user first interacts with the view, triggering an event or request. This request is then directed to the controller. For example, consider a scenario where a user wants to retrieve an article by its unique ID. In the controller, there's a specific route handler, getArticleById, which extracts the article_id from the request parameters. Here's the controller code:
 
-```
+```js
 const { selectArticleById } = require("../models/articles.models");
 
 exports.getArticleById = (req, res, next) => {
@@ -240,7 +242,7 @@ exports.getArticleById = (req, res, next) => {
 ```
 In this code, the controller delegates the task of retrieving the article to the model's selectArticleById function. This function contains the database query logic, as shown below:
 
-```
+```js
 exports.selectArticleById = (article_id) => {
   return db
     .query(
@@ -256,27 +258,8 @@ exports.selectArticleById = (article_id) => {
 };
 ```
 
-Here, the model handles the database interaction. It constructs a complex SQL query to fetch the article data along with the number of comments associated with it. If no results are found, the model rejects the promise with a 404 "Not Found" error.
+Here, the model handles the database interaction. It constructs a complex SQL query to fetch the article data along with the number of comments associated with it. If no results are found (i.e., no rows returned), the model rejects the promise with a 404 "Not Found" error.
 
-Once the model successfully retrieves the article data or handles errors, it communicates back to the controller. The controller then formats the data and sends an HTTP response with a status code of 200 and the article information. 
+Once the model successfully retrieves the article data or handles errors, it communicates back to the controller. The controller then formats the data and sends an HTTP response with a status code of 200 and the article information. In case of errors during data retrieval or processing, the catch block handles them and forwards them to a centralized error handling middleware (not shown in your code), ensuring a graceful and organized error management process. This separation of responsibilities between view, controller, and model, along with proper error handling, contributes to a robust and maintainable application architecture.
 
-In case of errors during data retrieval or processing, the catch block handles them and forwards them to the error handling middleware. This separation of responsibilities between view, controller, and model, along with proper error handling, contributes to a robust and maintainable application architecture.
-
-```
-exports.handlePsqlErrors = (err, req, res, next) => {
-  if (err.code === "22P02") {
-    res.status(400).send({ message: "Bad Request" });
-  } else next(err);
-};
-
-exports.handleCustomErrors = (err, req, res, next) => {
-  if (err.message) {
-    res.status(err.status).send({ message: err.message });
-  } else next(err);
-};
-
-exports.handleServersErrors = (err, req, res, next) => {
-  res.status(500).send({ message: "Errors with the internal server!" });
-};
-```
 
