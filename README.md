@@ -219,11 +219,10 @@ The MVC Flow chart is a visual representation of the structure the backend proje
 
 - Model: Manages data operations like retrieval, updating, creation, and deletion, delivering data to the controller in the required format.
 
-![image](https://github.com/DennisTockan/be-nc-news/assets/130880613/2cd613e4-cdce-489b-9f7f-57dda524817c)
 
 <br> 
  
-In the Model-View-Controller (MVC) architecture, the user first interacts with the view, triggering an event or request. This request is then directed to the controller. For example, consider a scenario where a user wants to retrieve an article by its unique ID. In the controller, there's a specific route handler, getArticleById, which extracts the article_id from the request parameters. Here's the controller code:
+In the MVC flow, the user first interacts with the view, triggering an event or request. This request is then directed to the controller. The code below demonstrates the scenario where a user wants to retrieve an article by its unique ID. In the controller, there's a specific route handler [getArticleById] which extracts the article_id from the request parameters. Here's the controller code:
 
 ```js
 const { selectArticleById } = require("../models/articles.models");
@@ -258,8 +257,26 @@ exports.selectArticleById = (article_id) => {
 };
 ```
 
-Here, the model handles the database interaction. It constructs a complex SQL query to fetch the article data along with the number of comments associated with it. If no results are found (i.e., no rows returned), the model rejects the promise with a 404 "Not Found" error.
+Here, the model handles the database interaction. It uses an SQL query to fetch the article data along with the number of comments associated with it. If no results are found, the model rejects the promise with a 404 "Not Found" error.
 
-Once the model successfully retrieves the article data or handles errors, it communicates back to the controller. The controller then formats the data and sends an HTTP response with a status code of 200 and the article information. In case of errors during data retrieval or processing, the catch block handles them and forwards them to a centralized error handling middleware (not shown in your code), ensuring a graceful and organized error management process. This separation of responsibilities between view, controller, and model, along with proper error handling, contributes to a robust and maintainable application architecture.
+Once the model successfully retrieves the article data or handles errors, it communicates back to the controller. The controller then formats the data and sends an HTTP response with a status code of 200 and the article information. 
 
+In case of errors during data retrieval or processing, the catch block handles them and forwards them to error handling middleware. This separation of responsibilities between view, controller, and model, along with proper error handling, contributes to a robust and maintainable application architecture.
 
+```js
+exports.handlePsqlErrors = (err, req, res, next) => {
+  if (err.code === "22P02") {
+    res.status(400).send({ message: "Bad Request" });
+  } else next(err);
+};
+
+exports.handleCustomErrors = (err, req, res, next) => {
+  if (err.message) {
+    res.status(err.status).send({ message: err.message });
+  } else next(err);
+};
+
+exports.handleServersErrors = (err, req, res, next) => {
+  res.status(500).send({ message: "Errors with the internal server!" });
+};
+```
