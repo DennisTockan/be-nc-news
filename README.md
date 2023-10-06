@@ -218,7 +218,48 @@ The MVC Flow chart is a visual representation of the structure the backend proje
 - Controller: Handles client requests, utilizes request information to interact with the model, and responds to the client with relevant data.
 
 - Model: Manages data operations like retrieval, updating, creation, and deletion, delivering data to the controller in the required format.
-  
 
+![image](https://github.com/DennisTockan/be-nc-news/assets/130880613/2cd613e4-cdce-489b-9f7f-57dda524817c)
+
+<br> 
+ 
+In the Model-View-Controller (MVC) architecture, the user first interacts with the view, triggering an event or request. This request is then directed to the controller. For example, consider a scenario where a user wants to retrieve an article by its unique ID. In the controller, there's a specific route handler, getArticleById, which extracts the article_id from the request parameters. Here's the controller code:
+
+```
+const { selectArticleById } = require("../models/articles.models");
+
+exports.getArticleById = (req, res, next) => {
+  const { article_id } = req.params;
+
+  selectArticleById(article_id)
+    .then((article) => {
+      res.status(200).send({ article });
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+```
+In this code, the controller delegates the task of retrieving the article to the model's selectArticleById function. This function contains the database query logic, as shown below:
+
+```
+exports.selectArticleById = (article_id) => {
+  return db
+    .query(
+      `SELECT articles.author, articles.title, articles.article_id, articles.body, articles.topic, articles.created_at, articles.votes, articles.article_img_url, COUNT(comment_id) AS comment_count FROM articles JOIN comments ON comments.article_id = articles.article_id WHERE articles.article_id = $1 GROUP BY articles.article_id;`,
+      [article_id]
+    )
+    .then(({ rows }) => {
+      if (rows.length === 0) {
+        return Promise.reject({ status: 404, message: "Not Found" });
+      }
+      return rows[0];
+    });
+};
+```
+
+Here, the model handles the database interaction. It constructs a complex SQL query to fetch the article data along with the number of comments associated with it. If no results are found (i.e., no rows returned), the model rejects the promise with a 404 "Not Found" error.
+
+Once the model successfully retrieves the article data or handles errors, it communicates back to the controller. The controller then formats the data and sends an HTTP response with a status code of 200 and the article information. In case of errors during data retrieval or processing, the catch block handles them and forwards them to a centralized error handling middleware (not shown in your code), ensuring a graceful and organized error management process. This separation of responsibilities between view, controller, and model, along with proper error handling, contributes to a robust and maintainable application architecture.
 
 
