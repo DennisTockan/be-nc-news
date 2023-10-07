@@ -315,7 +315,5 @@ exports.selectArticleIdComments = async (article_id) => {
 
 The $1 placeholder is employed within the SQL query string, such as in the provided code snippet. Rather than directly injecting user-supplied data into the SQL query, the actual value, in this case, article_id, is supplied as an array in the second argument to the query method. 
 
-This practice ensures that user inputs are securely handled and are never treated as executable SQL code, making it extremely challenging for attackers to exploit potential vulnerabilities. The code also includes error handling, returning a 404 Not Found error if the query yields no results.
-
-By adopting parameterized queries and these security practices, I have nullified the possibility of SQL injection risks for the application
+By adopting parameterized queries and these security practices, the possibility of SQL injection risks for the application has been nullified. 
 
