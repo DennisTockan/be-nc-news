@@ -259,6 +259,8 @@ exports.selectArticleById = (article_id) => {
 
 Here, the model handles the database interaction. It uses an SQL query to fetch the article data along with the number of comments associated with it. If no results are found, the model rejects the promise with a 404 "Not Found" error.
 
+## Error Handling
+
 Once the model successfully retrieves the article data or handles errors, it communicates back to the controller. The controller then formats the data and sends an HTTP response with a status code of 200 and the article information. 
 
 In case of errors during data retrieval or processing, the catch block handles them and forwards them to error handling middleware. This separation of responsibilities between view, controller, and model, along with proper error handling, contributes to a robust and maintainable application architecture.
@@ -280,3 +282,9 @@ exports.handleServersErrors = (err, req, res, next) => {
   res.status(500).send({ message: "Errors with the internal server!" });
 };
 ```
+
+## Interacting With The Database
+
+This project was built predicated around builing an Express.js application which interacts with a PostgreSQL database. To do this, I used the 'node-postgres' library. Once we have gone through the MVC flow to fetch data from the database, the code makes quieires to fetch the data from the database. Thtoughout doing this, we had to make sure the SQL quiries i conducted is safe and protected against SQL injection. To do this, i used patameterized quiries instead of manually concatenating strings to form the SQL queries.
+
+Here, i used the $1 placeholder for the .... value, and pass in the actual value in an array as the second argument to the 'query' method to help proect against SQL injection. This was used throughout the project. 
