@@ -129,6 +129,8 @@ Execute Jest test suites using the following command, optionally providing an id
 npm test OPTIONAL_IDENTIFIER
 ```
 
+<br>
+
 ## The Approach
 ### The Application Programming Interface (API)
 ---
