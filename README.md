@@ -25,7 +25,8 @@ NC News Forum is a dynamic web application designed to facilitate engaging discu
    - [Clone Instructions](#Clone-Instructions)
    - [Installation of Dependencies](#Installation-of-Dependencies)
    - [Environment Variables Setup](#Environment-Variables-Setup)
-   - [](#Proceed-to-Run-Setup-Scripts-and-Begin-Development)
+   - [Proceed to Run Setup Scripts and Begin Development](#Proceed-to-Run-Setup-Scripts-and-Begin-Development)
+   - [Running Tests](#Running-Tests)
 5. [The Approach](#The-Approach)
    - [Planning](#Planning)
    - [The API](#The-API)
@@ -294,19 +295,21 @@ Instead of manually concatenating SQL query strings, parameterised queries were 
 
 
 ```js
-exports.selectArticleById = (article_id) => {
-  return db
-    .query(
-      `SELECT articles.author, articles.title, articles.article_id, articles.body, articles.topic, articles.created_at, articles.votes, articles.article_img_url, COUNT(comment_id) AS comment_count FROM articles JOIN comments ON comments.article_id = articles.article_id WHERE articles.article_id = $1 GROUP BY articles.article_id;`,
+exports.selectArticleIdComments = async (article_id) => {
+  const checkExists = async (article_id) => {
+    const dbOutput = await db.query(
+      `SELECT * FROM articles WHERE article_id = $1;`,
       [article_id]
-    )
-    .then(({ rows }) => {
-      if (rows.length === 0) {
-        return Promise.reject({ status: 404, message: "Not Found" });
-      }
-      return rows[0];
-    });
-};
+    );
+    if (dbOutput.rows.length === 0) {
+      return Promise.reject({ status: 404, message: "Not Found" });
+    }
+  };
+
+  const doesArticleIdExist = await checkExists(article_id);
+  if (doesArticleIdExist) {
+    return doesArticleIdExist;
+  }
 ```
 
 The $1 placeholder is employed within the SQL query string, such as in the provided code snippet. Rather than directly injecting user-supplied data into the SQL query, the actual value, in this case, article_id, is supplied as an array in the second argument to the query method. 
