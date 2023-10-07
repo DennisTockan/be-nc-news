@@ -107,7 +107,7 @@ PGDATABASE=nc_news_test
 
 Make sure to include both .env files in your .gitignore to keep sensitive data safe.
 
-### Proceed to Run Setup Scripts and Begin Development
+### Proceed to Run Setup Scripts and Begin Development:
 ---
 1. Seed the local database:
 ```js
@@ -288,11 +288,12 @@ exports.handleServersErrors = (err, req, res, next) => {
 
 The project involved building an Express.js application that interacts with a PostgreSQL database using the 'node-postgres' library. The goal is to ensure the security of SQL queries and protect against SQL injection.
 
-As part of the MVC flow process, I took careful measures to ensure the security and integrity of our SQL queries when fetching data from the database. To mitigate the risk of SQL injection, I adopted a robust practice of utilizing parameterized queries, steering clear of the any potential security issues.
-
-
-Instead of manually concatenating SQL query strings, parameterised queries were used.
-
+#### Security Measures
+- In the MVC data retrieval process, SQL query security was ensured.
+- I used parameterized queries, avoiding manual string concatenation.
+- Instead of injecting user data directly, we employed the $1 placeholder.
+- User inputs are handled securely, making it challenging for attackers to exploit.
+- Our code includes error handling, returning a 404 Not Found if no results are found.
 
 ```js
 exports.selectArticleIdComments = async (article_id) => {
@@ -315,4 +316,6 @@ exports.selectArticleIdComments = async (article_id) => {
 The $1 placeholder is employed within the SQL query string, such as in the provided code snippet. Rather than directly injecting user-supplied data into the SQL query, the actual value, in this case, article_id, is supplied as an array in the second argument to the query method. 
 
 This practice ensures that user inputs are securely handled and are never treated as executable SQL code, making it extremely challenging for attackers to exploit potential vulnerabilities. The code also includes error handling, returning a 404 Not Found error if the query yields no results.
+
+By adopting parameterized queries and these security practices, I have nullified the possibility of SQL injection risks for the application
 
