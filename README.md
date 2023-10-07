@@ -285,6 +285,31 @@ exports.handleServersErrors = (err, req, res, next) => {
 
 ## Interacting With The Database
 
-This project was built predicated around builing an Express.js application which interacts with a PostgreSQL database. To do this, I used the 'node-postgres' library. Once we have gone through the MVC flow to fetch data from the database, the code makes quieires to fetch the data from the database. Thtoughout doing this, we had to make sure the SQL quiries i conducted is safe and protected against SQL injection. To do this, i used patameterized quiries instead of manually concatenating strings to form the SQL queries.
+The project involved building an Express.js application that interacts with a PostgreSQL database using the 'node-postgres' library. The goal is to ensure the security of SQL queries and protect against SQL injection.
 
-Here, i used the $1 placeholder for the .... value, and pass in the actual value in an array as the second argument to the 'query' method to help proect against SQL injection. This was used throughout the project. 
+As part of the MVC flow process, I took careful measures to ensure the security and integrity of our SQL queries when fetching data from the database. To mitigate the risk of SQL injection, I adopted a robust practice of utilizing parameterized queries, steering clear of the any potential security issues.
+
+
+Instead of manually concatenating SQL query strings, parameterised queries were used.
+
+
+```js
+exports.selectArticleById = (article_id) => {
+  return db
+    .query(
+      `SELECT articles.author, articles.title, articles.article_id, articles.body, articles.topic, articles.created_at, articles.votes, articles.article_img_url, COUNT(comment_id) AS comment_count FROM articles JOIN comments ON comments.article_id = articles.article_id WHERE articles.article_id = $1 GROUP BY articles.article_id;`,
+      [article_id]
+    )
+    .then(({ rows }) => {
+      if (rows.length === 0) {
+        return Promise.reject({ status: 404, message: "Not Found" });
+      }
+      return rows[0];
+    });
+};
+```
+
+The $1 placeholder is employed within the SQL query string, such as in the provided code snippet. Rather than directly injecting user-supplied data into the SQL query, the actual value, in this case, article_id, is supplied as an array in the second argument to the query method. 
+
+This practice ensures that user inputs are securely handled and are never treated as executable SQL code, making it extremely challenging for attackers to exploit potential vulnerabilities. The code also includes error handling, returning a 404 Not Found error if the query yields no results.
+
